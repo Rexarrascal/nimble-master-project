@@ -1,0 +1,135 @@
+[[
+  "1",
+  "2"
+],{
+  "id": "3",
+  "name": "4",
+  "phone": 5541111,
+  "email": "5",
+  "age": 27,
+  "orders": "6"
+},{
+  "id": "7",
+  "name": "8",
+  "phone": 5541112,
+  "email": "9",
+  "age": 27,
+  "orders": "10"
+},"ce8031ca-7650-4268-8417-802bdba629c2","Serkan","serkan@oz.com",[
+  "11",
+  "12"
+],"04b75bca-086b-4347-a1c2-e60c5fb07737","Nese","nese@ozdemir.com",[
+  "13"
+],{
+  "pharmacy": "14",
+  "customer": "15",
+  "drug": "16"
+},{
+  "pharmacy": "14",
+  "customer": "15",
+  "drug": "17"
+},{
+  "pharmacy": "18",
+  "customer": "2",
+  "drug": "19"
+},{
+  "id": "20",
+  "name": "21",
+  "phone": 212111,
+  "email": "22",
+  "location": "23",
+  "customers": "24",
+  "druglist": "25"
+},{
+  "id": "3",
+  "name": "4",
+  "phone": 5541111,
+  "email": "5",
+  "age": 27,
+  "orders": "6"
+},{
+  "id": "26",
+  "name": "27"
+},{
+  "id": "28",
+  "name": "29"
+},{
+  "id": "20",
+  "name": "21",
+  "phone": 212111,
+  "email": "22",
+  "location": "23",
+  "customers": "30",
+  "druglist": "31"
+},{
+  "id": "32",
+  "name": "33"
+},"bb055fba-6858-4855-b35f-e1f109846f02","DrugStore","drug@store.com","Mecidiyekoy",[
+  "15",
+  "15",
+  "34"
+],[
+  "35",
+  "36",
+  "37"
+],"b481d066-e2e9-499a-a330-95414f22e018","Aspirin","02267067-1e46-4281-a5f8-397a306210e7","Arvales",[
+  "38",
+  "38",
+  "2"
+],[
+  "39",
+  "40",
+  "41"
+],"1e4131ac-47f6-4ded-9250-09c2c086fb0d","Augmentin",{
+  "id": "7",
+  "name": "8",
+  "phone": 5541112,
+  "email": "9",
+  "age": 27,
+  "orders": "42"
+},{
+  "id": "16"
+},{
+  "id": "17"
+},{
+  "id": "43"
+},{
+  "id": "3",
+  "name": "4",
+  "phone": 5541111,
+  "email": "5",
+  "age": 27,
+  "orders": "44"
+},{
+  "id": "45"
+},{
+  "id": "46"
+},{
+  "id": "19"
+},[
+  "47"
+],{
+  "id": "32",
+  "name": "33"
+},[
+  "48",
+  "49"
+],{
+  "id": "26",
+  "name": "27"
+},{
+  "id": "28",
+  "name": "29"
+},{
+  "pharmacy": "14",
+  "customer": "34",
+  "drug": "43"
+},{
+  "pharmacy": "18",
+  "customer": "38",
+  "drug": "45"
+},{
+  "pharmacy": "18",
+  "customer": "38",
+  "drug": "46"
+}]

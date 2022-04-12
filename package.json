@@ -1,0 +1,21 @@
+{
+  "name": "2",
+  "version": "1.0.0",
+  "description": "Responsive project for delivery system for pharmacies",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon --ignore *.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Serkan OZ <serkan@oz.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "flatted": "^3.2.5",
+    "uuid": "^8.3.2"
+  }
+}

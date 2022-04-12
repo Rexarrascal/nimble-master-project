@@ -1,0 +1,65 @@
+[[
+  "1"
+],{
+  "id": "2",
+  "name": "3",
+  "phone": 212111,
+  "email": "4",
+  "location": "5",
+  "customers": "6",
+  "druglist": "7"
+},"bb055fba-6858-4855-b35f-e1f109846f02","DrugStore","drug@store.com","Mecidiyekoy",[
+  "8",
+  "8",
+  "9"
+],[
+  "10",
+  "11",
+  "12"
+],{
+  "id": "13",
+  "name": "14",
+  "phone": 5541111,
+  "email": "15",
+  "age": 27,
+  "orders": "16"
+},{
+  "id": "17",
+  "name": "18",
+  "phone": 5541112,
+  "email": "19",
+  "age": 27,
+  "orders": "20"
+},{
+  "id": "21"
+},{
+  "id": "22"
+},{
+  "id": "23"
+},"ce8031ca-7650-4268-8417-802bdba629c2","Serkan","serkan@oz.com",[
+  "24",
+  "25"
+],"04b75bca-086b-4347-a1c2-e60c5fb07737","Nese","nese@ozdemir.com",[
+  "26"
+],{
+  "id": "27",
+  "name": "28"
+},{
+  "id": "29",
+  "name": "30"
+},{
+  "id": "31",
+  "name": "32"
+},{
+  "pharmacy": "1",
+  "customer": "8",
+  "drug": "21"
+},{
+  "pharmacy": "1",
+  "customer": "8",
+  "drug": "22"
+},{
+  "pharmacy": "1",
+  "customer": "9",
+  "drug": "23"
+},"b481d066-e2e9-499a-a330-95414f22e018","Aspirin","02267067-1e46-4281-a5f8-397a306210e7","Arvales","1e4131ac-47f6-4ded-9250-09c2c086fb0d","Augmentin"]
