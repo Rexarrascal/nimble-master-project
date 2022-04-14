@@ -13,13 +13,13 @@ class Pharmacy {
         this.druglist = druglist
     }
 
-    addnewdrug(id, name) {
-        const drug = new Drug(id, name)
+    addnewdrug(object) {
+            const drug = new Drug(object)
 
-        this.druglist.push(drug)
+            this.druglist.push(object)
 
-        return drug
-    }
+            return drug
+        }
 
     static create({id, name, phone, email, location, customers, druglist}) {
         return new Pharmacy (id, name, phone, email, location, customers, druglist)

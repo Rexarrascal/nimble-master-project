@@ -1,0 +1,33 @@
+    order(pharmacy, drug) {
+        const order = new Order (pharmacy, this, drug)
+
+        async function mainorder () {
+        const drugfind = await pharmacyDatabase.findByPharmacyName(pharmacy.name).druglist.find(o => o.drug != drug)
+       
+        if (drugfind == -1) {
+            console.log(`${colors.red(drug.name)} is not contained in ${colors.yellow(pharmacy.name)}'s inventory.`)
+        }
+        else {
+            this.orders.push(order)
+            pharmacy.customers.push(this)
+        }
+        }
+        mainorder()
+    }
+
+    order(pharmacy, drug) {
+        if ( pharmacyDatabase.findByPharmacyName(pharmacy.name).druglist.find(o => o.drug != drug)) {
+            console.log(`${colors.red(drug.name)} is not contained in ${colors.yellow(pharmacy.name)}'s inventory.`)
+        }
+        else {
+            const order = new Order (pharmacy, this, drug)
+            this.orders.push(order)
+            pharmacy.customers.push(this)
+        }
+
+    order(pharmacy, drug) {
+        const order = new Order (pharmacy, this, drug)
+        this.orders.push(order)
+        pharmacy.customers.push(this)
+    }
+    

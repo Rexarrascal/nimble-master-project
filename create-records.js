@@ -1,30 +1,50 @@
 const Customer = require('./models/customer.js')
 const Pharmacy = require('./models/pharmacy.js')
 const Drug = require('./models/drug.js')
+const customerDatabase = require('./database/customer-database.js')
+const { printOrderHistory } = require('./lib/print-order-history.js')
 
-const serkan = new Customer(undefined, 'Serkan', 5541111, 'serkan@oz.com', 27 )
-const nese = new Customer(undefined, 'Nese', 5541112, 'nese@ozdemir.com', 27 )
-customerDatabase.save([serkan, nese])
+const serkan = Customer.create ({id: undefined, name: 'Serkan', phone: 5541111, email: 'serkan@example.com', age: 27})
+const nese = Customer.create ({id: undefined, name: 'Nese', phone: 5441111, email: 'nese@example.com', age: 27})
 
-const drugstore = new Pharmacy(undefined, 'DrugStore', 212111, 'drug@store.com', 'Mecidiyekoy')
-pharmcyDatabase.save([drugstore])
+const wallgreens = Pharmacy.create({id: undefined, name: 'WallGreens', phone: 212111, email: 'wall@greens.com', location: 'Etiler'})
+const drugstore = Pharmacy.create({id: undefined, name: 'DrugStore', phone: 212112, email: 'drug@store.com', location: 'Mecidiyekoy'})
 
-const aspirin = new Drug(undefined, 'Aspirin')
-const arvales = new Drug(undefined, 'Arvales')
-const augmentin = new Drug(undefined, 'Augmentin')
-drugDatabase.save([aspirin, arvales, augmentin])
+const aspirin = Drug.create({id: undefined, name: 'Aspirin'})
+const arvales = Drug.create({id: undefined, name: 'Arvales'})
+const augmentin = Drug.create({id: undefined, name: 'Augmentin'})
+const parol = Drug.create({id: undefined, name: 'Parol'})
 
+wallgreens.addnewdrug(parol)
 drugstore.addnewdrug(aspirin)
 drugstore.addnewdrug(arvales)
 drugstore.addnewdrug(augmentin)
-pharmcyDatabase.update(drugstore)
 
 serkan.order(drugstore, aspirin)
-serkan.order(drugstore, arvales)
+serkan.order(wallgreens, parol)
 nese.order(drugstore, augmentin)
-customerDatabase.update(serkan)
-customerDatabase.update(nese)
-pharmcyDatabase.update(drugstore)
+nese.order(drugstore, parol)
+
+async function main() {
+    try {
+        await customerDatabase.save([serkan, nese])
+        
+        await pharmacyDatabase.save([drugstore, wallgreens])
+
+        await drugDatabase.save([aspirin, arvales, augmentin, parol])
+
+        const ersen = Customer.create ({id: undefined, name: 'Ersen', phone: 5341111, email: 'ersen@example.com', age: 27})
+        ersen.order(drugstore, augmentin)
+        await customerDatabase.insert(ersen)
+        
+        printOrderHistory(nese)
+    }
+    catch (e) {
+        return console.log(e)
+    }
+}
+
+main()
 
 // class OrderCart {
 

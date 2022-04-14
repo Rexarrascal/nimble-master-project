@@ -1,135 +1,185 @@
 [[
   "1",
-  "2"
+  "2",
+  "3"
 ],{
-  "id": "3",
-  "name": "4",
+  "id": "4",
+  "name": "5",
   "phone": 5541111,
-  "email": "5",
+  "email": "6",
   "age": 27,
-  "orders": "6"
+  "orders": "7"
 },{
-  "id": "7",
-  "name": "8",
-  "phone": 5541112,
-  "email": "9",
+  "id": "8",
+  "name": "9",
+  "phone": 5441111,
+  "email": "10",
   "age": 27,
-  "orders": "10"
-},"ce8031ca-7650-4268-8417-802bdba629c2","Serkan","serkan@oz.com",[
-  "11",
-  "12"
-],"04b75bca-086b-4347-a1c2-e60c5fb07737","Nese","nese@ozdemir.com",[
-  "13"
+  "orders": "11"
+},{
+  "id": "12",
+  "name": "13",
+  "phone": 5341111,
+  "email": "14",
+  "age": 27,
+  "orders": "15"
+},"94251042-acc9-4284-bf43-a93710790007","Serkan","serkan@example.com",[
+  "16",
+  "17"
+],"acfa5d94-bc41-4645-8170-49fcef058add","Nese","nese@example.com",[
+  "18",
+  "19"
+],"54cd700f-4243-409a-8104-a1285d63314f","Ersen","ersen@example.com",[
+  "20"
 ],{
-  "pharmacy": "14",
-  "customer": "15",
-  "drug": "16"
+  "pharmacy": "21",
+  "customer": "22",
+  "drug": "23"
 },{
-  "pharmacy": "14",
-  "customer": "15",
-  "drug": "17"
+  "pharmacy": "24",
+  "customer": "22",
+  "drug": "25"
 },{
-  "pharmacy": "18",
-  "customer": "2",
-  "drug": "19"
+  "pharmacy": "21",
+  "customer": "26",
+  "drug": "27"
 },{
-  "id": "20",
-  "name": "21",
+  "pharmacy": "21",
+  "customer": "26",
+  "drug": "25"
+},{
+  "pharmacy": "28",
+  "customer": "3",
+  "drug": "29"
+},{
+  "id": "30",
+  "name": "31",
+  "phone": 212112,
+  "email": "32",
+  "location": "33",
+  "customers": "34",
+  "druglist": "35"
+},{
+  "id": "4",
+  "name": "5",
+  "phone": 5541111,
+  "email": "6",
+  "age": 27,
+  "orders": "7"
+},{
+  "id": "36",
+  "name": "37"
+},{
+  "id": "38",
+  "name": "39",
   "phone": 212111,
-  "email": "22",
-  "location": "23",
-  "customers": "24",
-  "druglist": "25"
+  "email": "40",
+  "location": "41",
+  "customers": "42",
+  "druglist": "43"
 },{
-  "id": "3",
-  "name": "4",
-  "phone": 5541111,
-  "email": "5",
+  "id": "44",
+  "name": "45"
+},{
+  "id": "8",
+  "name": "9",
+  "phone": 5441111,
+  "email": "10",
   "age": 27,
-  "orders": "6"
+  "orders": "11"
 },{
-  "id": "26",
-  "name": "27"
+  "id": "46",
+  "name": "47"
 },{
-  "id": "28",
-  "name": "29"
+  "id": "30",
+  "name": "31",
+  "phone": 212112,
+  "email": "32",
+  "location": "33",
+  "customers": "48",
+  "druglist": "49"
 },{
-  "id": "20",
-  "name": "21",
+  "id": "46",
+  "name": "47"
+},"7021361a-9a94-45bc-8d3e-0348ccbbbfd6","DrugStore","drug@store.com","Mecidiyekoy",[
+  "22",
+  "26",
+  "26"
+],[
+  "23",
+  "50",
+  "27"
+],"020f3311-e4af-4119-a667-22501c3e36f3","Aspirin","113097f0-b691-46ab-a96c-c41cd20a582a","WallGreens","wall@greens.com","Etiler",[
+  "22"
+],[
+  "25"
+],"64114b14-0cbb-4c59-a876-e7dbe770155e","Parol","2aca0545-4bf6-4b25-bbf2-21227b645a64","Augmentin",[
+  "51",
+  "52",
+  "52",
+  "3"
+],[
+  "53",
+  "54",
+  "29"
+],{
+  "id": "55",
+  "name": "56"
+},{
+  "id": "4",
+  "name": "5",
+  "phone": 5541111,
+  "email": "6",
+  "age": 27,
+  "orders": "57"
+},{
+  "id": "8",
+  "name": "9",
+  "phone": 5441111,
+  "email": "10",
+  "age": 27,
+  "orders": "58"
+},{
+  "id": "36",
+  "name": "37"
+},{
+  "id": "55",
+  "name": "56"
+},"1440a3b6-1004-452b-9cb1-d5df7c802ebd","Arvales",[
+  "59",
+  "60"
+],[
+  "61",
+  "62"
+],{
+  "pharmacy": "28",
+  "customer": "51",
+  "drug": "53"
+},{
+  "pharmacy": "63",
+  "customer": "51",
+  "drug": "64"
+},{
+  "pharmacy": "28",
+  "customer": "52",
+  "drug": "29"
+},{
+  "pharmacy": "28",
+  "customer": "52",
+  "drug": "64"
+},{
+  "id": "38",
+  "name": "39",
   "phone": 212111,
-  "email": "22",
-  "location": "23",
-  "customers": "30",
-  "druglist": "31"
+  "email": "40",
+  "location": "41",
+  "customers": "65",
+  "druglist": "66"
 },{
-  "id": "32",
-  "name": "33"
-},"bb055fba-6858-4855-b35f-e1f109846f02","DrugStore","drug@store.com","Mecidiyekoy",[
-  "15",
-  "15",
-  "34"
-],[
-  "35",
-  "36",
-  "37"
-],"b481d066-e2e9-499a-a330-95414f22e018","Aspirin","02267067-1e46-4281-a5f8-397a306210e7","Arvales",[
-  "38",
-  "38",
-  "2"
-],[
-  "39",
-  "40",
-  "41"
-],"1e4131ac-47f6-4ded-9250-09c2c086fb0d","Augmentin",{
-  "id": "7",
-  "name": "8",
-  "phone": 5541112,
-  "email": "9",
-  "age": 27,
-  "orders": "42"
-},{
-  "id": "16"
-},{
-  "id": "17"
-},{
-  "id": "43"
-},{
-  "id": "3",
-  "name": "4",
-  "phone": 5541111,
-  "email": "5",
-  "age": 27,
-  "orders": "44"
-},{
-  "id": "45"
-},{
-  "id": "46"
-},{
-  "id": "19"
+  "id": "44",
+  "name": "45"
 },[
-  "47"
-],{
-  "id": "32",
-  "name": "33"
-},[
-  "48",
-  "49"
-],{
-  "id": "26",
-  "name": "27"
-},{
-  "id": "28",
-  "name": "29"
-},{
-  "pharmacy": "14",
-  "customer": "34",
-  "drug": "43"
-},{
-  "pharmacy": "18",
-  "customer": "38",
-  "drug": "45"
-},{
-  "pharmacy": "18",
-  "customer": "38",
-  "drug": "46"
-}]
+  "51"
+],[
+  "64"
+]]
