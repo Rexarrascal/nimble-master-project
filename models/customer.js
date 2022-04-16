@@ -13,16 +13,23 @@ class Customer {
         this.orders = orders
     }
 
-    /// Inventory check upgrade is needed.
+    /// Inventory check upgrade in druglist of pharmacies is needed.
     
     order(pharmacy, drug) {
         const order = new Order (pharmacy, this, drug)
         this.orders.push(order)
         pharmacy.customers.push(this)
     }
-      
 
+    // async order(pharmacy, drug) {
+    //     const check = await pharmacyDatabase.findByPharmacyName(pharmacy.name).druglist.find(drug)
+    //     if ( !check ) throw new Error (`${colors.red(drug.name)} is not contained in ${colors.yellow(pharmacy.name)}'s inventory.`)
 
+    //     const order = new Order (pharmacy, this, drug)
+    //     this.orders.push(order)
+    //     pharmacy.customers.push(this)
+    //     }       
+         
     static create({id, name, phone, email, age, orders}) {
             return new Customer (id, name, phone, email, age, orders)
     }
@@ -56,31 +63,6 @@ class Customer {
     // }
 
     //// TRIAL 2 Worked before async process
-
-    // order(pharmacy, drug) {
-    //     const order = new Order (pharmacy, this, drug)
-        
-    //     if ( pharmacyDatabase.findByPharmacyName(pharmacy.name).druglist.find(o => o.drug != drug)) {
-    //         console.log(`${colors.red(drug.name)} is not contained in ${colors.yellow(pharmacy.name)}'s inventory.`)
-    //     } else {
-            
-    //         this.orders.push(order)
-    //         pharmacy.customers.push(this)
-    //     }       
-    // }
-
-    //// TRIAL 3 
-
-    //     if ( pharmacy.druglist.find(o => o.drug == drug)) {
-    //         const order = new Order (pharmacy, this, drug)
-    //         this.orders.push(order)
-    //         pharmacy.customers.push(this)
-            
-    //     } else {
-    //         console.log(`${colors.red(drug.name)} is not contained in ${colors.yellow(pharmacy.name)}'s inventory.`) 
-
-    //     }       
-    // }
 
 }
 

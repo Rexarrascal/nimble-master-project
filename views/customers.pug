@@ -1,0 +1,9 @@
+extends layout 
+block content 
+    h2 Customers 
+    p There are #{customers.length} customers waiting...
+
+    ol
+        each customer in customers 
+            li
+                a(href=`/customers/${customer.id}`)= customer.name

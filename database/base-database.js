@@ -30,11 +30,39 @@ class BaseDatabase {
 
   async insert(object) {
     const objects = await this.load()
+
+    /// index js de post isteginde req.param.body ile customer kaydetmek icin ekledi.
+    
+    //  parametre icine gelen obje eger customer degilse onu customer
+    //  turune cevirmek icin bu if kullanildi. Ayrica customer depency ortadan kalkmis oldu.
+    // (eski hali )
+
+    // app.post('/customers', async (req, res) => {
+    //   const customer = Customer.create(req.body) ===== (yeni hali) const customer = await passengerDatabase.insert(req.body)
+    //   await customerDatabase.insert(customer)
+  
+    //   res.send(customer)
+  
+    if (!(object instanceof this.model)){ 
+      object= this.model.create(object)
+    }
+    /// index js de post isteginde req.param.body ile customer kaydetmek icin ekledi
     return this.save(objects.concat(object))
   }
 
   async remove(index) {
     const objects = await this.load()
+
+    objects.splice(index, 1)
+    return this.save(objects)
+  }
+
+  async removeBy(property, value) {
+    const objects = await this.load()
+
+    const index = await objects.findIndex(o => o[property] == value)
+
+    if (index == -1) throw new Error(`Cannot find ${this.model.name} instance with id ${property} ${value}`)
 
     objects.splice(index, 1)
     return this.save(objects)

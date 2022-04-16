@@ -1,0 +1,13 @@
+extends layout 
+block content 
+    h2 Customer Detail 
+    h3  #{customer.name}
+
+    p Order History
+
+    if customer.orders.length
+        ol                     
+            each order in customer.orders
+                li  wants to order a(an) #{order.drug.name} from #{order.pharmacy.name}
+    else 
+    p  No orders. 

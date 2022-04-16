@@ -1,5 +1,4 @@
 const Drug = require('./drug.js')
-const Customer = require('./customer.js')
 const uuid = require('uuid')
 
 class Pharmacy {
@@ -13,10 +12,10 @@ class Pharmacy {
         this.druglist = druglist
     }
 
-    addnewdrug(object) {
-            const drug = new Drug(object)
+    addnewdrug(drug) {
+            const drug1 = new Drug(drug)
 
-            this.druglist.push(object)
+            this.druglist.push(drug)
 
             return drug
         }

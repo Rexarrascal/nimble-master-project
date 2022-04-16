@@ -17,64 +17,78 @@
   "location": "12",
   "customers": "13",
   "druglist": "14"
-},"7021361a-9a94-45bc-8d3e-0348ccbbbfd6","DrugStore","drug@store.com","Mecidiyekoy",[
+},"ba293ddb-3302-4573-b9ac-34eb442770f2","Drug Store","drug@store.com","Mecidiyekoy",[
   "15",
   "16",
-  "16"
+  "16",
+  "17"
 ],[
-  "17",
   "18",
-  "19"
-],"113097f0-b691-46ab-a96c-c41cd20a582a","WallGreens","wall@greens.com","Etiler",[
+  "19",
+  "20"
+],"606d2a98-edd9-482c-9b48-f6b62d7362b7","Wall Greens","wall@greens.com","Etiler",[
   "15"
 ],[
-  "20"
+  "21"
 ],{
-  "id": "21",
-  "name": "22",
+  "id": "22",
+  "name": "23",
   "phone": 5541111,
-  "email": "23",
+  "email": "24",
   "age": 27,
-  "orders": "24"
+  "orders": "25"
 },{
-  "id": "25",
-  "name": "26",
+  "id": "26",
+  "name": "27",
   "phone": 5441111,
-  "email": "27",
+  "email": "28",
   "age": 27,
-  "orders": "28"
+  "orders": "29"
 },{
-  "id": "29",
-  "name": "30"
+  "id": "30",
+  "name": "31",
+  "phone": 5051111,
+  "email": "32",
+  "age": 59,
+  "orders": "33"
 },{
-  "id": "31",
-  "name": "32"
+  "id": "34",
+  "name": "35"
 },{
-  "id": "33",
-  "name": "34"
+  "id": "36",
+  "name": "37"
 },{
-  "id": "35",
-  "name": "36"
-},"94251042-acc9-4284-bf43-a93710790007","Serkan","serkan@example.com",[
-  "37",
-  "38"
-],"acfa5d94-bc41-4645-8170-49fcef058add","Nese","nese@example.com",[
-  "39",
-  "40"
-],"020f3311-e4af-4119-a667-22501c3e36f3","Aspirin","1440a3b6-1004-452b-9cb1-d5df7c802ebd","Arvales","2aca0545-4bf6-4b25-bbf2-21227b645a64","Augmentin","64114b14-0cbb-4c59-a876-e7dbe770155e","Parol",{
+  "id": "38",
+  "name": "39"
+},{
+  "id": "40",
+  "name": "41"
+},"d528daf6-9433-4c76-8082-fd47a50a6f56","Serkan","serkan@example.com",[
+  "42",
+  "43"
+],"ba9a2019-be2f-41cd-98e2-cfa0a1725e1e","Nese","nese@example.com",[
+  "44",
+  "45"
+],"1aadca4d-fd5c-4aba-912a-a26e30bf9f0b","Gulnaz","gulnaz@example.com",[
+  "46"
+],"cf17b873-00c2-45a7-bb2d-1921ffab520d","Aspirin","79d737d4-8396-4708-bfe5-e91be8729c4e","Arvales","04da1633-ef22-472f-b58e-ad574f51074d","Augmentin","150d993a-1e90-45a8-becc-277aac1d4e95","Parol",{
   "pharmacy": "1",
   "customer": "15",
-  "drug": "17"
+  "drug": "18"
 },{
   "pharmacy": "2",
   "customer": "15",
-  "drug": "20"
-},{
-  "pharmacy": "1",
-  "customer": "16",
-  "drug": "19"
+  "drug": "21"
 },{
   "pharmacy": "1",
   "customer": "16",
   "drug": "20"
+},{
+  "pharmacy": "1",
+  "customer": "16",
+  "drug": "21"
+},{
+  "pharmacy": "1",
+  "customer": "17",
+  "drug": "21"
 }]
