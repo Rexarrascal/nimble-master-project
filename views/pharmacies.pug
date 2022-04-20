@@ -1,0 +1,9 @@
+extends layout 
+block content 
+    h2 Pharmacies 
+    p There are #{pharmacies.length} pharmacies waiting...
+
+    ol
+        each pharmacy in pharmacies 
+            li
+                a(href=`/pharmacies/${pharmacy.id}`)= pharmacy.name

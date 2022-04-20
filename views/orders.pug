@@ -1,0 +1,14 @@
+extends layout 
+block content 
+    h2 Orders 
+    p There are #{orders.length} orders waiting...
+
+    ol
+        each order in orders 
+            li
+                p Pharmacy:
+                    a(href=`/pharmacies/${order.pharmacy.id}`)  #{order.pharmacy.name}
+                p Customer:
+                    a(href=`/customers/${order.customer.id}`)  #{order.customer.name}
+                p Drug:
+                    a(href=`/drugs/${order.drug.id}`)  #{order.drug.name}

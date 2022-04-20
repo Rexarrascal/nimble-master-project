@@ -18,6 +18,8 @@
     "colors": "^1.4.0",
     "express": "^4.17.3",
     "flatted": "^3.2.5",
+    "mongoose": "^6.3.0",
+    "mongoose-autopopulate": "^0.16.1",
     "pug": "^3.0.2",
     "uuid": "^8.3.2"
   }

@@ -1,7 +1,7 @@
 const Customer = require('./models/customer.js')
 const Pharmacy = require('./models/pharmacy.js')
 const Drug = require('./models/drug.js')
-const { customerDatabase, pharmacyDatabase, drugDatabase} = require('./database')
+const { customerService, pharmacyService, drugService} = require('./services')
 const { printOrderHistory } = require('./lib/print-order-history.js')
 
 const serkan = Customer.create ({id: undefined, name: 'Serkan', phone: 5541111, email: 'serkan@example.com', age: 27})
@@ -18,10 +18,10 @@ const arvales = Drug.create({id: undefined, name: 'Arvales'})
 const augmentin = Drug.create({id: undefined, name: 'Augmentin'})
 const parol = Drug.create({id: undefined, name: 'Parol'})
 
-wallgreens.addnewdrug(parol)
-drugstore.addnewdrug(aspirin)
-drugstore.addnewdrug(arvales)
-drugstore.addnewdrug(augmentin)
+// wallgreens.addnewdrug(parol)
+// drugstore.addnewdrug(aspirin)
+// drugstore.addnewdrug(arvales)
+// drugstore.addnewdrug(augmentin)
 
 serkan.order(drugstore, aspirin)
 serkan.order(wallgreens, parol)
@@ -31,15 +31,15 @@ gulnaz.order(drugstore, parol)
 
 async function main() {
     try {
-        await customerDatabase.save([serkan, nese, gulnaz, aliosman, erkan])
+        await customerService.save([serkan, nese, gulnaz, aliosman, erkan])
         
-        await pharmacyDatabase.save([drugstore, wallgreens])
+        await pharmacyService.save([drugstore, wallgreens])
 
-        await drugDatabase.save([aspirin, arvales, augmentin, parol])
+        await drugService.save([aspirin, arvales, augmentin, parol])
 
         const ersen = Customer.create ({id: undefined, name: 'Ersen', phone: 5341111, email: 'ersen@example.com', age: 27})
         ersen.order(drugstore, augmentin)
-        await customerDatabase.insert(ersen)
+        await customerService.insert(ersen)
         
         printOrderHistory(gulnaz)
     }

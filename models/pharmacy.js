@@ -1,31 +1,55 @@
-const Drug = require('./drug.js')
-const uuid = require('uuid')
+const mongoose = require('mongoose')
 
-class Pharmacy {
-    constructor(id = uuid.v4(), name, phone, email, location, customers = [], druglist = []) {
-        this.id = id
-        this.name = name
-        this.phone = phone
-        this.email = email
-        this.location = location
-        this.customers = customers
-        this.druglist = druglist
-    }
+const PharmacySchema = new mongoose.Schema({
+    name: {type: String, required: true, minlength: 2},
+    phone: Number,
+    email: String,
+    location: String,
+    customers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer',
+        autopopulate: { maxDepth: 1 }
+    }]
+})
 
-    addnewdrug(drug) {
-            const drug1 = new Drug(drug)
+    // druglist: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Drug',
+    //     autopopulate: { maxDepth: 1 }
+    // }]
+    
+PharmacySchema.plugin(require('mongoose-autopopulate'))
 
-            this.druglist.push(drug)
+module.exports = mongoose.model('Pharmacy', PharmacySchema)
 
-            return drug
-        }
+// const Drug = require('./drug.js')
+// const uuid = require('uuid')
 
-    static create({id, name, phone, email, location, customers, druglist}) {
-        return new Pharmacy (id, name, phone, email, location, customers, druglist)
-    }
+// class Pharmacy {
+//     constructor(id = uuid.v4(), name, phone, email, location, customers = [], druglist = []) {
+//         this.id = id
+//         this.name = name
+//         this.phone = phone
+//         this.email = email
+//         this.location = location
+//         this.customers = customers
+//         this.druglist = druglist
+//     }
 
-    // dropadrug(name) {
-    // }
-}
+//     addnewdrug(drug) {
+//             const drug1 = new Drug(drug)
 
-module.exports = Pharmacy
+//             this.druglist.push(drug)
+
+//             return drug
+//         }
+
+//     static create({id, name, phone, email, location, customers, druglist}) {
+//         return new Pharmacy (id, name, phone, email, location, customers, druglist)
+//     }
+
+//     dropadrug(name) {
+//     }
+// }
+
+// module.exports = Pharmacy

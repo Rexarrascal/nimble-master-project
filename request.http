@@ -1,0 +1,39 @@
+POST http://localhost:3000/customers HTTP/1.1
+content-type: application/json
+
+{"name":"Nese", "location": "GOP", "age": 27}
+
+###
+
+GET http://localhost:3000/customers/625f15df9bdf828561747421 HTTP/1.1
+
+###
+DELETE http://localhost:3000/customers/ HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/passengers/5e9de4cd9f11eb7402e56941 HTTP/1.1
+content-type: application/json
+
+{"name": "new name4"}
+
+###
+
+POST http://localhost:3000/pharmacies HTTP/1.1
+content-type: application/json
+
+{"name":"Wall Greens", "location": "Mecidiyekoy"}
+
+###
+
+POST http://localhost:3000/drugs/ HTTP/1.1
+content-type: application/json
+
+{"name":"MuscoFlex"}
+
+###
+
+POST http://localhost:3000/customers/625f16807ca6f46be1ff5720/orders HTTP/1.1
+content-type: application/json
+
+{"pharmacyId":"625f16049bdf828561747424", "drugId":"625f1a5c7ca6f46be1ff572f"}

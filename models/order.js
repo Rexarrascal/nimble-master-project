@@ -1,11 +1,35 @@
-const uuid = require('uuid')
+const mongoose = require('mongoose')
 
-class Order {
-    constructor(pharmacy, customer, drug) {
-        this.pharmacy = pharmacy
-        this.customer = customer
-        this.drug = drug 
-    }
-}
+const OrderSchema = new mongoose.Schema({
+    pharmacy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pharmacy',
+        autopopulate: { maxDepth: 1 }
+    },
+    customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer',
+        autopopulate: { maxDepth: 1 }
+    },
+    drug: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Drug',
+        autopopulate: { maxDepth: 1 }
+    },
+})
 
-module.exports = Order
+OrderSchema.plugin(require('mongoose-autopopulate'))
+
+module.exports = mongoose.model('Order', OrderSchema)
+
+// const uuid = require('uuid')
+
+// class Order {
+//     constructor(pharmacy, customer, drug) {
+//         this.pharmacy = pharmacy
+//         this.customer = customer
+//         this.drug = drug 
+//     }
+// }
+
+// module.exports = Order
