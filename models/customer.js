@@ -1,4 +1,3 @@
-const Order = require('./order')
 const mongoose = require('mongoose')
 
 const CustomerSchema = new mongoose.Schema({
@@ -12,7 +11,6 @@ const CustomerSchema = new mongoose.Schema({
         autopopulate: { maxDepth: 2 }
     }]
 })
-
 
 CustomerSchema.plugin(require('mongoose-autopopulate'))
 

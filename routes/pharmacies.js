@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 router.delete('/:pharmacyId', async (req, res) => {
     await pharmacyService.removeBy('id', req.params.pharmacyId)
 
-    res.send(`${pharmacyId} deleted`)
+    res.send(`Pharmacy Deleted`)
 })
 
 router.get('/:pharmacyId', async (req, res) => {
@@ -29,7 +29,9 @@ router.patch('/:pharmacyId', async (req, res) => {
     const { pharmacyId } = req.params
     const { name } = req.body
   
-    await pharmaciesService.update(pharmacyId, { name })
+    await pharmacyService.update(pharmacyId, { name })
+
+    res.send(`The name of the pharmacy changed to ${name}`)
   })
 
 module.exports = router

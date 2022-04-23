@@ -1,3 +1,5 @@
+const { reset } = require('nodemon')
+const customer = require('../models/customer')
 const { customerService, orderService } = require('../services')
 
 const router = require('express').Router()
@@ -8,19 +10,23 @@ router.get('/', async (req, res) => {
     res.render('customers', { customers })
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
-        const customer = await customerService.insert(req.body)
-        res.send(customer)
+      const customer = await customerService.insert(req.body)
+      res.send(customer)
     } catch(e) {
-        next(e)
-    }   
-})
+      next(e)
+    }
+  })
 
 router.delete('/:customerId', async (req, res) => {
-    await customerService.removeBy('id', req.params.customerId)
+  const customer = await customerService.find(req.params.customerId)
+    
+  if (!customer) return res.status(404).send('Cannot find customer')
 
-    res.send('OK')
+  await customerService.removeBy('id', req.params.customerId)
+
+  res.send('Customer Deleted')
 })
 
 router.get('/:customerId', async (req, res) => {
@@ -44,6 +50,8 @@ router.patch('/:customerId', async (req, res) => {
     const { name } = req.body
   
     await customerService.update(customerId, { name })
+
+    res.send(`The name of the customer changed to ${name}`)
   })
 
 module.exports = router

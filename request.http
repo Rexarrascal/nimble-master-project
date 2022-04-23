@@ -1,35 +1,35 @@
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Nese", "location": "GOP", "age": 27}
+{"name":"Gulnaz", "location": "Edirne", "age": 59}
 
 ###
 
-GET http://localhost:3000/customers/625f15df9bdf828561747421 HTTP/1.1
+GET http://localhost:3000/drugs/626427e86d758fefaf2f81ec HTTP/1.1
 
 ###
-DELETE http://localhost:3000/customers/ HTTP/1.1
+DELETE http://localhost:3000/pharmacies/6263ea656bc96d2964f3a45f HTTP/1.1
 
 ###
 
-PATCH http://localhost:3000/passengers/5e9de4cd9f11eb7402e56941 HTTP/1.1
+PATCH http://localhost:3000/drugs/6264213ad14f74a35c8e494b HTTP/1.1
 content-type: application/json
 
-{"name": "new name4"}
+{"name": "Newer Drug"}
 
 ###
 
 POST http://localhost:3000/pharmacies HTTP/1.1
 content-type: application/json
 
-{"name":"Wall Greens", "location": "Mecidiyekoy"}
+{"name":"New Pharmacy", "location": "Mecidiyekoy"}
 
 ###
 
 POST http://localhost:3000/drugs/ HTTP/1.1
 content-type: application/json
 
-{"name":"MuscoFlex"}
+{"name":"New Drug"}
 
 ###
 

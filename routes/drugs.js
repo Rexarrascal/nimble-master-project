@@ -24,13 +24,15 @@ router.get('/:drugId', async (req, res) => {
     
     if (!drug) return res.status(404).send('Cannot find drug')
     res.render('drug', { drug })
+    res.send(drug)
 })
 
 router.patch('/:drugId', async (req, res) => {
     const { drugId } = req.params
     const { name } = req.body
   
-    await pharmaciesService.update(drugId, { name })
+    await drugService.update(drugId, { name })
+    res.send(`The name of the drug changed to ${name}`)
   })
 
 module.exports = router
