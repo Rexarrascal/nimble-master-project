@@ -1,0 +1,9 @@
+{
+    "eslint.options": {
+        "configFile": "..\frontend\babel.config.js"
+    },
+    
+    "eslint.workingDirectories": [
+        {"mode": "auto"}
+ ],
+}

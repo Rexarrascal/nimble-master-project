@@ -1,7 +1,7 @@
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Gulnaz", "location": "Edirne", "age": 59}
+{"name":"Ali Osman", "location": "Edirne", "age": 61}
 
 ###
 
@@ -22,18 +22,18 @@ content-type: application/json
 POST http://localhost:3000/pharmacies HTTP/1.1
 content-type: application/json
 
-{"name":"New Pharmacy", "location": "Mecidiyekoy"}
+{"name":"Wall Greens", "location": "Mecidiyekoy"}
 
 ###
 
 POST http://localhost:3000/drugs/ HTTP/1.1
 content-type: application/json
 
-{"name":"New Drug"}
+{"name":"Parol"}
 
 ###
 
-POST http://localhost:3000/customers/625f16807ca6f46be1ff5720/orders HTTP/1.1
+POST http://localhost:3000/customers/626e55944c60007e5ced6d9c/orders HTTP/1.1
 content-type: application/json
 
-{"pharmacyId":"625f16049bdf828561747424", "drugId":"625f1a5c7ca6f46be1ff572f"}
+{"pharmacyId":"626e55a44c60007e5ced6d9e", "drugId":"626e56124c60007e5ced6dac"}
