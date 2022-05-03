@@ -1,5 +1,14 @@
 extends layout 
 block content 
     h2 Pharmacy Detail 
-    p #{pharmacy.name}
-    p #{pharmacy.location}
+    h3 #{pharmacy.name} / #{pharmacy.location}
+
+    if pharmacy.druglist.length
+        h4 #{pharmacy.name}'s Inventory
+        ol 
+            each drug in pharmacy.druglist 
+                li You can order a(an) #{drug.name} from #{pharmacy.name}.
+    else 
+        p There is no item in #{pharmacy.name}'s inventory.
+
+

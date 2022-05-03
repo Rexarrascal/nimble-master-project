@@ -7,17 +7,15 @@ export default {
     return {
       isLoading: true,
       customer: {},
-      pharmacies: [],
-      drug: ''
+      orders: []
     }
   },
   async mounted () {
     this.customer = await this.fetchCustomer(this.$route.params.customerId)
-    this.pharmacies = await this.fetchPharmacies()
     this.isLoading = false
   },
   methods: {
-    ...mapActions(['fetchCustomer', 'fetchPharmacies', 'orderDrug'])
+    ...mapActions(['fetchCustomer'])
   }
 }
 </script>
@@ -29,18 +27,18 @@ export default {
     h2 Customer Detail
     h3 {{ customer.name }} / {{ customer.age }}
 
-    h2 Order History
+    h4 Order History
     div(v-if="customer.orders.length")
       ol
         li(v-for="order in customer.orders")
           | {{ customer.name }} wants to order a(an) {{ order.drug.name }} from {{ order.pharmacy.name }}
     p(v-else) No orders.
-    h2 Create New Order
-    h3 Pharmacies
-    input(v-model="drug")
-    div(v-if="pharmacies.length")
-      ol
-        li(v-for="pharmacy in pharmacies")
-          | {{ pharmacy.name }} is ready for your order at {{ pharmacy.location }}
-          button.order(@click="orderDrug({pharmacyId: pharmacy._id, customerId: customer._id, drugId: drug._id})") Order Drug
+    //- h2 Create New Order
+    //- h3 Pharmacies
+    //- input(v-model="drug")
+    //- div(v-if="pharmacies.length")
+    //-   ol
+    //-     li(v-for="pharmacy in pharmacies")
+    //-       | {{ pharmacy.name }} is ready for your order at {{ pharmacy.location }}
+    //-       button.order(@click="orderDrug({pharmacyId: pharmacy._id, customerId: customer._id, drug)") Order Drug
 </template>

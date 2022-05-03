@@ -1,4 +1,12 @@
 extends layout 
 block content 
     h2 Drug Detail 
-    h3 #{Drug.name}
+    h3 #{drug.name}
+
+    if drug.sellers.length
+        h4 #{drug.name}'s Sellers
+        ol 
+            each pharmacy in drug.sellers
+                li You can order a(an) #{drug.name} from #{pharmacy.name}.
+    else 
+        p There is no seller.

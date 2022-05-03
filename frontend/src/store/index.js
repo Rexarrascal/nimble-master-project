@@ -47,6 +47,18 @@ export default createStore({
       const request = await axios.get('/pharmacies')
       return request.data
     },
+    async fetchPharmacy (ctx, pharmacyId) {
+      const request = await axios.get(`/pharmacies/${pharmacyId}`)
+      return request.data
+    },
+    async fetchDrugs () {
+      const request = await axios.get('/drugs')
+      return request.data
+    },
+    async fetchDrug (ctx, drugId) {
+      const request = await axios.get(`/drugs/${drugId}`)
+      return request.data
+    },
     async orderDrug (ctx, { pharmacyId, customerId, drugId }) {
       const request = await axios.post(`/customers/${customerId}/orders`, {
         pharmacyId, customerId, drugId
