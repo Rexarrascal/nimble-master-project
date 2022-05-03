@@ -1,39 +1,56 @@
+                ### CUSTOMER ###
+### CREATE A NEW CUSTOMER
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Ali Osman", "location": "Edirne", "age": 61}
+{"name":"Serkan", "location": "Edirne", "age": 27}
 
-###
+### GET A CUSTOMER
 
-GET http://localhost:3000/drugs/626427e86d758fefaf2f81ec HTTP/1.1
+GET http://localhost:3000/customers/626427e86d758fefaf2f81ec HTTP/1.1
 
-###
+### DELETE A CUSTOMER
+
 DELETE http://localhost:3000/pharmacies/6263ea656bc96d2964f3a45f HTTP/1.1
 
-###
+### CREATE A NEW ORDER
+
+POST http://localhost:3000/customers/62711415ed1b686ff77c9285/orders HTTP/1.1
+content-type: application/json
+
+{"pharmacyId":"627116be308c7d575470503f", "drugId":"627116c5308c7d5754705041"}
+
+                ### PHARMACY ###
+###CREATE A PHARMACY
+
+POST http://localhost:3000/pharmacies HTTP/1.1
+content-type: application/json
+
+{"name":"Wall Greens", "location": "Bebek"}
+
+### ADD A DRUG TO DRUGLIST
+
+POST http://localhost:3000/pharmacies/627116be308c7d575470503f/druglist HTTP/1.1
+content-type: application/json
+
+{"drugId":"627116c5308c7d5754705041"}
+
+                ### DRUGS ###
+### CREATE A DRUG
+
+POST http://localhost:3000/drugs/ HTTP/1.1
+content-type: application/json
+
+{"name":"Aspirin"}
+
+### UPDATE A DRUG'S NAME
 
 PATCH http://localhost:3000/drugs/6264213ad14f74a35c8e494b HTTP/1.1
 content-type: application/json
 
 {"name": "Newer Drug"}
 
-###
 
-POST http://localhost:3000/pharmacies HTTP/1.1
-content-type: application/json
 
-{"name":"Wall Greens", "location": "Mecidiyekoy"}
 
-###
 
-POST http://localhost:3000/drugs/ HTTP/1.1
-content-type: application/json
-
-{"name":"Parol"}
-
-###
-
-POST http://localhost:3000/customers/626e55944c60007e5ced6d9c/orders HTTP/1.1
-content-type: application/json
-
-{"pharmacyId":"626e55a44c60007e5ced6d9e", "drugId":"626e56124c60007e5ced6dac"}
