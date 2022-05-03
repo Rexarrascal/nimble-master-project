@@ -2,22 +2,21 @@ const mongoose = require('mongoose')
 
 const PharmacySchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 2},
+    location: {type: String, required: true, minlength: 2},
     phone: Number,
     email: String,
-    location: String,
     customers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer',
         autopopulate: { maxDepth: 1 }
+    }],
+    druglist: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Drug',
+        autopopulate: { maxDepth: 1}
     }]
 })
-
-    // druglist: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Drug',
-    //     autopopulate: { maxDepth: 1 }
-    // }]
-    
+  
 PharmacySchema.plugin(require('mongoose-autopopulate'))
 
 module.exports = mongoose.model('Pharmacy', PharmacySchema)

@@ -3,9 +3,7 @@ const { drugService } = require('../services')
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
-    const drugs = await drugService.load()
-
-    res.render('drugs', { drugs })
+    res.send(await drugService.load())
 })
 
 router.post('/', async (req, res) => {
@@ -22,8 +20,7 @@ router.delete('/:drugId', async (req, res) => {
 router.get('/:drugId', async (req, res) => {
     const drug = await drugService.find(req.params.drugId)
     
-    if (!drug) return res.status(404).send('Cannot find drug')
-    res.render('drug', { drug })
+    if (!drug) return res.status(404)
     res.send(drug)
 })
 

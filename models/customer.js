@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const CustomerSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 2},
+    age: {type: Number, required:true, min: 18},
+    location: {type: String, required: true},
     phone: Number,
     email: String,
-    age: {type: Number, required:true, min: 18},
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',

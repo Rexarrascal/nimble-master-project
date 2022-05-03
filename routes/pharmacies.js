@@ -3,14 +3,21 @@ const { pharmacyService } = require('../services')
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
-    const pharmacies = await pharmacyService.load()
-
-    res.render('pharmacies', { pharmacies })
+    res.send(await pharmacyService.load())
 })
 
 router.post('/', async (req, res) => {
     const pharmacy = await pharmacyService.insert(req.body)
     res.send(pharmacy)
+})
+
+router.post('/:pharmacyId/druglist', async (req, res) => {
+    const { pharmacyId } = req.params
+    const { drugId } = req.body
+
+    await pharmacyService.addDrug(pharmacyId, drugId)
+
+    res.send(`${drugId.name} added to ${pharmacyId.name}'s inventory`)
 })
 
 router.delete('/:pharmacyId', async (req, res) => {
@@ -22,7 +29,7 @@ router.delete('/:pharmacyId', async (req, res) => {
 router.get('/:pharmacyId', async (req, res) => {
     const pharmacy = await pharmacyService.find(req.params.pharmacyId)
     if (!pharmacy) return res.status(404).send('Cannot find pharmacy')
-    res.render('pharmacy', { pharmacy })
+    res.send(pharmacy)
 })
 
 router.patch('/:pharmacyId', async (req, res) => {
