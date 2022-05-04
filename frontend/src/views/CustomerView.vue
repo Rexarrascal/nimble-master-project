@@ -7,15 +7,26 @@ export default {
     return {
       isLoading: true,
       customer: {},
-      orders: []
+      orders: [],
+      pharmacies: [],
+      drugs: []
     }
   },
   async mounted () {
-    this.customer = await this.fetchCustomer(this.$route.params.customerId)
+    await this.updateCustomer()
+    this.pharmacies = await this.fetchPharmacies()
+    // this.drugs = await this.fetchDrugs()
     this.isLoading = false
   },
   methods: {
-    ...mapActions(['fetchCustomer'])
+    ...mapActions(['fetchCustomer', 'fetchPharmacies', 'orderDrug']),
+    async orderDrugAndUpdate ({ pharmacyId, customerId, drugId }) {
+      await this.orderDrug({ pharmacyId, customerId, drugId })
+      this.updateCustomer()
+    },
+    async updateCustomer () {
+      this.customer = await this.fetchCustomer(this.$route.params.customerId)
+    }
   }
 }
 </script>
@@ -33,12 +44,40 @@ export default {
         li(v-for="order in customer.orders")
           | {{ customer.name }} wants to order a(an) {{ order.drug.name }} from {{ order.pharmacy.name }}
     p(v-else) No orders.
-    //- h2 Create New Order
-    //- h3 Pharmacies
-    //- input(v-model="drug")
-    //- div(v-if="pharmacies.length")
-    //-   ol
-    //-     li(v-for="pharmacy in pharmacies")
-    //-       | {{ pharmacy.name }} is ready for your order at {{ pharmacy.location }}
-    //-       button.order(@click="orderDrug({pharmacyId: pharmacy._id, customerId: customer._id, drug)") Order Drug
+    h3 Create New Order
+    h4 Pharmacies
+    div(v-if="pharmacies.length")
+      ol
+        li(v-for="pharmacy in pharmacies" class="pharmacy")
+          | <strong>{{ pharmacy.name }}</strong>
+          ul
+            li(v-for="drug in pharmacy.druglist" class="drug")
+              | {{ drug.name }}
+              button.order(@click="orderDrugAndUpdate({pharmacyId: pharmacy._id, customerId: customer._id, drugId: drug._id})") +
 </template>
+
+<style scoped lang="scss">
+
+button.order {
+  background: #0b6dff;
+  border: 0;
+  padding: 5px 5px;
+  margin-left: 10px;
+  color: white;
+  border-radius: 50%;
+}
+.order {
+  font-size: 30%;
+  text-align: center;
+}
+
+.pharmacy {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.drug {
+  margin-top: 10px;
+}
+
+</style>

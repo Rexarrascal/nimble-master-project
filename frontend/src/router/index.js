@@ -6,6 +6,7 @@ import PharmaciesView from '../views/PharmaciesView.vue'
 import PharmacyView from '../views/PharmacyView.vue'
 import DrugsView from '../views/DrugsView.vue'
 import DrugView from '../views/DrugView.vue'
+import RegisterView from '../views/RegisterView'
 
 const routes = [
   {
@@ -47,8 +48,12 @@ const routes = [
     path: '/about',
     name: 'AboutView',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/register',
+    name: 'RegisterView',
+    component: RegisterView
   }
-
 ]
 
 const router = createRouter({
