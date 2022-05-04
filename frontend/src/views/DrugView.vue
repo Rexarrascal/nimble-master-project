@@ -25,10 +25,10 @@ export default {
   div(v-else)
     h3 {{ drug.name }}
 
-    h4 Seller List
     div(v-if="drug.sellers.length")
+      h4 Seller List
       ol
         li(v-for="pharmacy in drug.sellers")
-          | You can order a(an) {{ drug.name }} from {{ pharmacy.name }}.
+          | {{ pharmacy.name }}.
     p(v-else) There is not a stock in the pharmacies.
 </template>
