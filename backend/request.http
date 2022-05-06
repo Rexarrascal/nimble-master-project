@@ -30,10 +30,10 @@ content-type: application/json
 
 ### ADD A DRUG TO DRUGLIST
 
-POST http://localhost:3000/pharmacies/627116be308c7d575470503f/druglist HTTP/1.1
+POST http://localhost:3000/pharmacies/6275265f79c2546a8f2c6c8c/druglist HTTP/1.1
 content-type: application/json
 
-{"drugId":"627116c5308c7d5754705041"}
+{"drugId":"6275266679c2546a8f2c6c8e"}
 
                 ### DRUGS ###
 ### CREATE A DRUG

@@ -1,0 +1,18 @@
+version: 'version'
+services:
+  frontend:
+    build: frontend
+    ports: 
+      - 8080:8080
+  backend:
+    build: backend
+    environment:
+      MONGODB_CONNECTION_STRING: "mongodb://database/drug-order-app"
+    ports: 
+      - 3000:3000
+  database:
+    image: mongo:5.0.7
+    ports:
+      - 37107:27107
+    volumes:
+      - ./data:/data/db

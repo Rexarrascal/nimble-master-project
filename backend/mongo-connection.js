@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/nimble-project', { useNewUrlParser: true, useUnifiedTopology: true })
+
+const connectionString = process.env.MONGODB_CONNECTION_STRING || 'mongodb://127.0.0.1/nimble-project'
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
 
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
