@@ -7,10 +7,10 @@ services:
   backend:
     build: backend
     environment:
-      MONGODB_CONNECTION_STRING: "mongodb://database/drug-order-app"
+      MONGODB_CONNECTION_STRING: "mongodb://mongodb/drug-order-app"
     ports: 
       - 3000:3000
-  database:
+  mongodb:
     image: mongo:5.0.7
     ports:
       - 37107:27107

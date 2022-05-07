@@ -1,9 +1,9 @@
                 ### CUSTOMER ###
 ### CREATE A NEW CUSTOMER
-POST http://localhost:3000/customers HTTP/1.1
+POST https://backend-4m7nspnvoa-ew.a.run.app/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Serkan", "location": "Edirne", "age": 27}
+{"name":"Nese", "location": "GOP", "age": 27}
 
 ### GET A CUSTOMER
 
@@ -23,25 +23,25 @@ content-type: application/json
                 ### PHARMACY ###
 ###CREATE A PHARMACY
 
-POST http://localhost:3000/pharmacies HTTP/1.1
+POST https://backend-4m7nspnvoa-ew.a.run.app/pharmacies HTTP/1.1
 content-type: application/json
 
-{"name":"Wall Greens", "location": "Bebek"}
+{"name":"Drug Store", "location": "Mecidiyekoy"}
 
 ### ADD A DRUG TO DRUGLIST
 
-POST http://localhost:3000/pharmacies/6275265f79c2546a8f2c6c8c/druglist HTTP/1.1
+POST https://backend-4m7nspnvoa-ew.a.run.app/pharmacies/6276dee481abc4741dfc04fd/druglist HTTP/1.1
 content-type: application/json
 
-{"drugId":"6275266679c2546a8f2c6c8e"}
+{"drugId":"6276def381abc4741dfc0500"}
 
                 ### DRUGS ###
 ### CREATE A DRUG
 
-POST http://localhost:3000/drugs/ HTTP/1.1
+POST https://backend-4m7nspnvoa-ew.a.run.app/drugs/ HTTP/1.1
 content-type: application/json
 
-{"name":"Aspirin"}
+{"name":"Arvales"}
 
 ### UPDATE A DRUG'S NAME
 
