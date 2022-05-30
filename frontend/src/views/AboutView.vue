@@ -1,21 +1,21 @@
 <script>
-import HelloWorld from '@/components/HelloWorld'
-import { mapState } from 'vuex'
+import Counter from "@/components/Counter";
+import { mapState } from "vuex";
 
 export default {
-  name: 'AboutView',
+  name: "AboutView",
   components: {
-    HelloWorld
+    Counter,
   },
 
   computed: {
-    ...mapState(['countAbout'])
-  }
-}
+    ...mapState(["countAbout"]),
+  },
+};
 </script>
 
 <template lang="pug">
 .about
   h1 This is an about page
-  HelloWorld(type="countAbout" :count="countAbout" msg="")
+  Counter(type="countAbout" :count="countAbout" msg="")
 </template>

@@ -1,22 +1,22 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-  name: 'CustomersView',
-  data () {
+  name: "CustomersView",
+  data() {
     return {
       customers: [],
-      isLoading: true
-    }
+      isLoading: true,
+    };
   },
-  async mounted () {
-    this.customers = await this.fetchCustomers()
-    this.isLoading = false
+  async mounted() {
+    this.customers = await this.fetchCustomers();
+    this.isLoading = false;
   },
   methods: {
-    ...mapActions(['fetchCustomers'])
-  }
-}
+    ...mapActions(["fetchCustomers"]),
+  },
+};
 </script>
 
 <template lang="pug">

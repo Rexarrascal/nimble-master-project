@@ -2,7 +2,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'HelloWorld',
+  name: 'CounterComponent',
   props: {
     msg: String,
     type: String,

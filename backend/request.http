@@ -1,9 +1,9 @@
                 ### CUSTOMER ###
 ### CREATE A NEW CUSTOMER
-POST https://backend-4m7nspnvoa-ew.a.run.app/customers HTTP/1.1
+POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Nese", "location": "GOP", "age": 27}
+{"name":"Erkan", "location": "Izmir", "age": 33}
 
 ### GET A CUSTOMER
 

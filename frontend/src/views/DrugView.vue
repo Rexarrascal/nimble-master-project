@@ -1,22 +1,22 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-  name: 'DrugView',
-  data () {
+  name: "DrugView",
+  data() {
     return {
       isLoading: true,
       drug: {},
-      sellers: []
-    }
+      sellers: [],
+    };
   },
-  async mounted () {
-    this.drug = await this.fetchDrug(this.$route.params.drugId)
-    this.isLoading = false
+  async mounted() {
+    this.drug = await this.fetchDrug(this.$route.params.drugId);
+    this.isLoading = false;
   },
   methods: {
-    ...mapActions(['fetchDrug'])
-  }
-}
+    ...mapActions(["fetchDrug"]),
+  },
+};
 </script>
 
 <template lang="pug">

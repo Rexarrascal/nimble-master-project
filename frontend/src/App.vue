@@ -1,13 +1,16 @@
+<script>
+import Navbar from "./components/Navbar.vue"
+
+export default{
+  components: {
+    Navbar,
+  },
+}
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/customers">Customers</router-link> |
-    <router-link to="/pharmacies">Pharmacies</router-link> |
-    <router-link to="/drugs">Drugs</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/register">Register</router-link>
-  </nav>
-  <router-view/>
+  <Navbar />
+  <router-view />
 </template>
 
 <style lang="scss">
@@ -17,18 +20,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

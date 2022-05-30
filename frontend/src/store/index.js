@@ -64,9 +64,37 @@ export default createStore({
       const request = await axios.post(`/customers/${customerId}/orders`, {
         pharmacyId, customerId, drugId
       })
-
       return request.data
-    }
+    },
+
+    // async registerUser (ctx, { name, email, password, passwordAgain, accType }) {
+    //   if (this.password === this.passwordAgain && this.password.length > 5) {
+    //     this.passwordError = "";
+    //     const data = {
+    //       name: this.name,
+    //       email: this.email,
+    //       password: this.password,
+    //       accType: this.accType,
+    //     };
+    //     if (this.accType === "Customer") {
+    //       const request = await axios.post(
+    //         "/customers",
+    //         data
+    //       );
+    //       return request.data
+    //     } else {
+    //       const request = await axios.post(
+    //         "/pharmacies",
+    //         data
+    //       );
+    //       return request
+    //     }
+    //   } else if (this.password.length <= 5) {
+    //     this.passwordError = "Password must be at least 6 chars long";
+    //   } else if (this.password !== this.passwordAgain) {
+    //     this.passwordError = "Passwords need to match";
+    //   }
+    // }
   },
 
   modules: {

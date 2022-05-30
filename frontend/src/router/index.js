@@ -6,7 +6,9 @@ import PharmaciesView from '../views/PharmaciesView.vue'
 import PharmacyView from '../views/PharmacyView.vue'
 import DrugsView from '../views/DrugsView.vue'
 import DrugView from '../views/DrugView.vue'
-import RegisterView from '../views/RegisterView'
+import SignupView from '../views/SignupView'
+import AboutView from '../views/AboutView'
+import LoginView from '../views/LoginView'
 
 const routes = [
   {
@@ -47,13 +49,18 @@ const routes = [
   {
     path: '/about',
     name: 'AboutView',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView
   },
   {
-    path: '/register',
-    name: 'RegisterView',
-    component: RegisterView
-  }
+    path: '/signup',
+    name: 'SignupView',
+    component: SignupView
+  },
+  {
+    path: '/login',
+    name: 'LoginView',
+    component: LoginView
+  },
 ]
 
 const router = createRouter({

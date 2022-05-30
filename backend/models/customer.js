@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 
 const CustomerSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 2},
-    age: {type: Number, required:true, min: 18},
-    location: {type: String, required: true},
+    password: {type: Number},
+    age: {type: Number},
+    location: {type: String},
     phone: Number,
     email: String,
     orders: [{

@@ -1,34 +1,34 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-  name: 'CustomerView',
-  data () {
+  name: "CustomerView",
+  data() {
     return {
       isLoading: true,
       customer: {},
       orders: [],
       pharmacies: [],
-      drugs: []
-    }
+      drugs: [],
+    };
   },
-  async mounted () {
-    await this.updateCustomer()
-    this.pharmacies = await this.fetchPharmacies()
+  async mounted() {
+    await this.updateCustomer();
+    this.pharmacies = await this.fetchPharmacies();
     // this.drugs = await this.fetchDrugs()
-    this.isLoading = false
+    this.isLoading = false;
   },
   methods: {
-    ...mapActions(['fetchCustomer', 'fetchPharmacies', 'orderDrug']),
-    async orderDrugAndUpdate ({ pharmacyId, customerId, drugId }) {
-      await this.orderDrug({ pharmacyId, customerId, drugId })
-      this.updateCustomer()
+    ...mapActions(["fetchCustomer", "fetchPharmacies", "orderDrug"]),
+    async orderDrugAndUpdate({ pharmacyId, customerId, drugId }) {
+      await this.orderDrug({ pharmacyId, customerId, drugId });
+      this.updateCustomer();
     },
-    async updateCustomer () {
-      this.customer = await this.fetchCustomer(this.$route.params.customerId)
-    }
-  }
-}
+    async updateCustomer() {
+      this.customer = await this.fetchCustomer(this.$route.params.customerId);
+    },
+  },
+};
 </script>
 
 <template lang="pug">
@@ -57,7 +57,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
 button.order {
   background: #0b6dff;
   border: 0;
@@ -79,5 +78,4 @@ button.order {
 .drug {
   margin-top: 10px;
 }
-
 </style>
