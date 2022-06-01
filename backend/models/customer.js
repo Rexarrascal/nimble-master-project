@@ -2,11 +2,12 @@ const mongoose = require('mongoose')
 
 const CustomerSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 2},
-    password: {type: Number},
+    password: {type: String, unique: true},
     age: {type: Number},
     location: {type: String},
     phone: Number,
     email: String,
+    date: {type:Date, default: Date.now},
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',

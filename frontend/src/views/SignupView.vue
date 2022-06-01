@@ -1,6 +1,4 @@
 <script>
-import { mapActions } from "vuex";
-import router from '../router'
 import axios from 'axios'
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
 console.log('base url', axios.defaults.baseURL)
@@ -22,42 +20,38 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["registerUser"]),
-
     async handleSubmit() {
       if (this.password === this.passwordAgain && this.password.length > 5) {
         this.passwordError = "";
-        const data = {
+        const userData = {
           name: this.name,
           email: this.email,
           password: this.password,
-          accType: this.accType,
         };
         if (this.accType === "Customer") {
-          const request = await axios.post("/customers",data);
-          
-          return request.data
+          const request = await axios.post("/customers",userData);
+          this.$router.push('/login')
+          return request.userData
         } else {
-          const request = await axios.post("/pharmacies",data
-          );
-          return request.data
+          const request = await axios.post("/pharmacies",userData);
+          this.$router.push('/login')
+          return request.userData
+          
         };
-        console.log(request)
-        this.$router.push('/')
       } else if (this.password.length <= 5) {
         this.passwordError = "Password must be at least 6 chars long";
       } else if (this.password !== this.passwordAgain) {
         this.passwordError = "Passwords need to match";
       }
     },
-    
+
   },
 };
 </script>
 
 <template lang="pug">
 .signUp
-  form(@submit.prevent="handleSubmit" action="/" method="POST")
+  form(@submit.prevent="handleSubmit" action="/")
     label Account type:
     select(v-model="accType")
       option(value="Customer") Customer
@@ -92,6 +86,8 @@ export default {
 
     .submit
       button(type="submit" class="btn btn-success") Sign Up
+
+    router-link(class="card-link" id="hello" to="/login") Already have an accout ?
 
     p Name: {{ name }}
     p Acc Type: {{ accType }}

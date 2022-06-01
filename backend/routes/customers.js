@@ -1,4 +1,5 @@
 const { customerService, orderService } = require('../services')
+const bcrypt = require('bcrypt')
 
 const router = require('express').Router()
 
@@ -9,13 +10,18 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res, next) => {
-    try {
-      const customer = await customerService.insert(req.body)
-      res.send(customer)
+  try {
+    const userData = ({
+        name: req.body.name,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 10)
+    })
+    const customer = await customerService.insert(userData)
+    res.send(customer)
     } catch(e) {
-      next(e)
+    next(e)
     }
-  })
+})
 
 router.delete('/:customerId', async (req, res) => {
   const customer = await customerService.find(req.params.customerId)

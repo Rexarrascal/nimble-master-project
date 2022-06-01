@@ -1,33 +1,61 @@
 <script>
+import { mapActions } from "vuex";
+import axios from 'axios'
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
+console.log('base url', axios.defaults.baseURL)
+
 export default {
   name: "Login",
   data() {
     return {
+      accType: "Customer",
       email: "",
-      password: ""
+      password: "",
+
+      error: ""
     }
-  }
+  },
+  methods: {
+    ...mapActions([""]),
+
+    handleSubmit() {
+      const userData = {
+        email: this.email,
+        password: this.password,
+      };
+      axios.post('/login', userData)
+        .then( res => {
+          if ( res.status === 200 ) {
+            localStorage.setItem('token', res.data.token)
+            this.$router.push('/login')
+          }
+        }), err => {
+          console.log( err, response);
+          this.err = err.response.data.error
+        }
+      }
+    }
 }
 </script>
 
 <template lang="pug">
 .login
-  form(action="/" method="POST")
+  form(action="/")
+    label Account type:
+    select(v-model="accType")
+      option(value="Customer") Customer
+      option(value="Pharmacy") Pharmacy
 
     label Email:
     input(type="email" required v-model="email" placeholder="")
 
     label Password:
     input(type="password" required v-model="password")
-    .error(v-if="passwordError")
-      | {{ passwordError }}
-
-    .terms
-      input(type="checkbox" required v-model="terms")
-      label Accept terms and conditions
-
+    
     .submit
-      button(type="button" class="btn btn-success") Login
+      button(@click="handleSubmit" type="button" class="btn btn-success") Login
+    
+    router-link(class="card-link" id="hello" to="/signup") Need an account ?
 </template>
 
 <style scoped lang="scss">
@@ -82,4 +110,5 @@ button {
   font-size: 0.8em;
   font-weight: bold;
 }
+
 </style>

@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 
 const PharmacySchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 2},
-    password: {type: Number},
+    password: {type: String},
     location: {type: String},
     phone: Number,
     email: String,
+    date: {type:Date, default: Date.now},
     customers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer',

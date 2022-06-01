@@ -1,9 +1,16 @@
                 ### CUSTOMER ###
 ### CREATE A NEW CUSTOMER
+POST http://localhost:3000/signup HTTP/1.1
+content-type: application/json
+
+{"name":"Erkan Test", "email": "test@test.com","password":"123456", "location": "Izmir", "age": 33}
+
+###
+
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Erkan", "location": "Izmir", "age": 33}
+{"name":"Erkan", "email": "test@test.com","password":"123456", "location": "Izmir", "age": 33}
 
 ### GET A CUSTOMER
 
