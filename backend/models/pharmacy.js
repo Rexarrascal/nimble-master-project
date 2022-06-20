@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt')
 const jwt = require("jsonwebtoken")
 
 const PharmacySchema = new mongoose.Schema({
-    name: {type: String, required: [true, "Please Include your name"], minlength: 2},
-    email: {type:String, required: [true, "Please Include your email"],},
-    password: {type: String, required: [true, "Please Include your password"],},
-    tokens: [{token: {type: String,required: true}}],
+    name: {type: String, required: [true, "Please, enter your name"], minlength: 2},
+    email: {type:String, required: [true, "Please, enter your name"],},
+    password: {type: String, required: [true, "Please, enter your name"],},
+    tokens: [{token: {type: String, required: true}}],
     location: {type: String},
     phone: Number,
     date: {type:Date, default: Date.now},
@@ -59,38 +59,5 @@ PharmacySchema.statics.findByCredentials = async (email, password) => {
   };
   
 PharmacySchema.plugin(require('mongoose-autopopulate'))
-
 const Pharmacy = mongoose.model('Pharmacy', PharmacySchema)
 module.exports = Pharmacy
-
-// const Drug = require('./drug.js')
-// const uuid = require('uuid')
-
-// class Pharmacy {
-//     constructor(id = uuid.v4(), name, phone, email, location, pharmacys = [], druglist = []) {
-//         this.id = id
-//         this.name = name
-//         this.phone = phone
-//         this.email = email
-//         this.location = location
-//         this.pharmacys = pharmacys
-//         this.druglist = druglist
-//     }
-
-//     addnewdrug(drug) {
-//             const drug1 = new Drug(drug)
-
-//             this.druglist.push(drug)
-
-//             return drug
-//         }
-
-//     static create({id, name, phone, email, location, pharmacys, druglist}) {
-//         return new Pharmacy (id, name, phone, email, location, pharmacys, druglist)
-//     }
-
-//     dropadrug(name) {
-//     }
-// }
-
-// module.exports = Pharmacy
