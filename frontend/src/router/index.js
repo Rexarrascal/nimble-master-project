@@ -6,7 +6,7 @@ import PharmaciesView from '../views/PharmaciesView.vue'
 import PharmacyView from '../views/PharmacyView.vue'
 import DrugsView from '../views/DrugsView.vue'
 import DrugView from '../views/DrugView.vue'
-import SignupView from '../views/SignupView'
+import RegisterView from '../views/RegisterView'
 import LoginView from '../views/LoginView'
 import AboutView from '../views/AboutView'
 
@@ -54,22 +54,22 @@ const routes = [
   },
   {
     path: '/signup',
-    name: "SignupView",
-    component: SignupView
+    name: "RegisterView",
+    component: RegisterView
   },
   {
     path: '/login',
     name: "LoginView",
     component: LoginView
   },
-  {
-    path: '/dashboard',
-    name: "DashboardView",
-    component: () => import("../views/DashboardView.vue"),
-    meta: {
-      requiresAuth: true
-    }
-  },
+  // {
+  //   path: '/dashboard',
+  //   name: "DashboardView",
+  //   component: () => import("../views/DashboardView.vue"),
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
 ]
 
 const router = createRouter({
