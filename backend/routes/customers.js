@@ -1,6 +1,5 @@
 const { customerService, orderService } = require('../services')
-const bcrypt = require('bcrypt')
-
+const customerController = require('../controller/customerController')
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
@@ -9,19 +8,9 @@ router.get('/', async (req, res) => {
     res.send( customers )
 })
 
-router.post('/', async (req, res, next) => {
-  try {
-    const userData = ({
-        name: req.body.name,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10)
-    })
-    const customer = await customerService.insert(userData)
-    res.send(customer)
-    } catch(e) {
-    next(e)
-    }
-})
+router.post('/', customerController.registerNewCustomer)
+
+router.post('/login', customerController.loginCustomer)
 
 router.delete('/:customerId', async (req, res) => {
   const customer = await customerService.find(req.params.customerId)

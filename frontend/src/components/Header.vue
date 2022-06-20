@@ -1,6 +1,5 @@
 <script>
 export default {
-  name: "Navbar",
 };
 </script>
 
@@ -45,11 +44,15 @@ export default {
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
             <router-link class="nav-link" to="/signup">
-              <span class="glyphicon glyphicon-user"></span>  Sign Up</router-link>
+              <span class="glyphicon glyphicon-user"></span>  Sign Up </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/login">
-              <span class="glyphicon glyphicon-log-in"></span>  Login</router-link>
+              <span class="glyphicon glyphicon-log-in"></span>  Login </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login">
+              <span class="glyphicon glyphicon-log-in"></span>  Logout </router-link>
           </li>
         </ul>
       </div>

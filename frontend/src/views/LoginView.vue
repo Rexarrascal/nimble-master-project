@@ -1,5 +1,6 @@
 <script>
 import { mapActions } from "vuex";
+const swal = require('sweetalert')
 import axios from 'axios'
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
 console.log('base url', axios.defaults.baseURL)
@@ -11,30 +12,44 @@ export default {
       accType: "Customer",
       email: "",
       password: "",
-
-      error: ""
     }
   },
   methods: {
-    ...mapActions([""]),
-
-    handleSubmit() {
-      const userData = {
+    async handleSubmit() {
+      const login = {
         email: this.email,
         password: this.password,
       };
-      axios.post('/login', userData)
-        .then( res => {
-          if ( res.status === 200 ) {
-            localStorage.setItem('token', res.data.token)
-            this.$router.push('/login')
+      if (this.accType === "Customer") {
+        try {
+          let response = await axios.post("/customers/login", login);
+          let token = response.data.token;
+          localStorage.setItem("jwt", token);
+          if (token) {
+            swal("Success", "Login Successful", "success");
+            this.$router.push("/");
           }
-        }), err => {
-          console.log( err, response);
-          this.err = err.response.data.error
+        } catch (err) {
+          swal("Error", "Something Went Wrong", "error");
+          console.log(err.response);
+        }
+      }
+      else if (this.accType === "Pharmacy") {
+        try {
+          let response = await axios.post("/pharmacies/login", login);
+          let token = response.data.token;
+          localStorage.setItem("jwt", token);
+          if (token) {
+            swal("Success", "Login Successful", "success");
+            this.$router.push("/");
+          }
+        } catch (err) {
+          swal("Error", "Something Went Wrong", "error");
+          console.log(err.response);
         }
       }
     }
+  }
 }
 </script>
 

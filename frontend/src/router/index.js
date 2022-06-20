@@ -7,8 +7,9 @@ import PharmacyView from '../views/PharmacyView.vue'
 import DrugsView from '../views/DrugsView.vue'
 import DrugView from '../views/DrugView.vue'
 import SignupView from '../views/SignupView'
-import AboutView from '../views/AboutView'
 import LoginView from '../views/LoginView'
+import AboutView from '../views/AboutView'
+
 
 const routes = [
   {
@@ -53,13 +54,21 @@ const routes = [
   },
   {
     path: '/signup',
-    name: 'SignupView',
+    name: "SignupView",
     component: SignupView
   },
   {
     path: '/login',
-    name: 'LoginView',
+    name: "LoginView",
     component: LoginView
+  },
+  {
+    path: '/dashboard',
+    name: "DashboardView",
+    component: () => import("../views/DashboardView.vue"),
+    meta: {
+      requiresAuth: true
+    }
   },
 ]
 
@@ -67,5 +76,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem("jwt") == null) {
+      next({
+        path: "/"
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 export default router

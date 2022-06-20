@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios'
+const swal = require('sweetalert')
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
 console.log('base url', axios.defaults.baseURL)
 
@@ -9,10 +10,9 @@ export default {
     return {
       accType: "Customer",
       name: "",
-      surname: "",
       email: "",
-      phone: "",
       password: "",
+      phone: "",
       passwordAgain: "",
       birthDate: "",
       terms: false,
@@ -21,22 +21,53 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      const register = {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      }
       if (this.password === this.passwordAgain && this.password.length > 5) {
         this.passwordError = "";
-        const userData = {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-        };
         if (this.accType === "Customer") {
-          const request = await axios.post("/customers",userData);
-          this.$router.push('/login')
-          return request.userData
-        } else {
-          const request = await axios.post("/pharmacies",userData);
-          this.$router.push('/login')
-          return request.userData
-          
+          try {
+            let response = await axios.post("/customers", register);
+            console.log(response);
+            let token = response.data.token;
+            if (token) {
+              localStorage.setItem("jwt", token);
+              this.$router.push("/login");
+              swal("Success", "Successfully Registered", "success");
+            } else {
+              swal("Error", "Something Went Wrong", "error");
+            }
+          } catch (err) {
+            let error = err.response;
+            if (error.status == 409) {
+              swal("Error", error.data.message, "error");
+            } else {
+              swal("Error", error.data.err.message, "error");
+            }
+          }
+        } else if (this.accType === "Pharmacy" ) {
+          try {
+            let response = await axios.post("/pharmacies", register);
+            console.log(response);
+            let token = response.data.token;
+            if (token) {
+              localStorage.setItem("jwt", token);
+              this.$router.push("/login");
+              swal("Success", "Successfully Registered", "success");
+            } else {
+              swal("Error", "Something Went Wrong", "error");
+            }
+          } catch (err) {
+            let error = err.response;
+            if (error.status == 409) {
+              swal("Error", error.data.message, "error");
+            } else {
+              swal("Error", error.data.err.message, "error");
+            }
+          }
         };
       } else if (this.password.length <= 5) {
         this.passwordError = "Password must be at least 6 chars long";
@@ -86,9 +117,13 @@ export default {
 
     .submit
       button(type="submit" class="btn btn-success") Sign Up
+      br
 
-    router-link(class="card-link" id="hello" to="/login") Already have an accout ?
+    router-link(class="card-link" id="hello" style="text-align:center" to="/login") Already have an accout ?
 
+    br
+    br
+    br 
     p Name: {{ name }}
     p Acc Type: {{ accType }}
     p Terms: {{ terms }}
@@ -140,6 +175,7 @@ button {
 }
 .submit {
   text-align: center;
+  margin-bottom: 20px;
 }
 .error {
   color: #ff0062;

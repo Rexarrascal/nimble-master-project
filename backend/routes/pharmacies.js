@@ -1,25 +1,14 @@
 const { pharmacyService } = require('../services')
-const bcrypt = require('bcrypt')
-
+const pharmacyController = require('../controller/pharmacyContoller')
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
     res.send(await pharmacyService.load())
 })
 
-router.post('/', async (req, res, next) => {
-    try {
-        const userData = ({
-            name: req.body.name,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10)
-        })
-        const pharmacy = await pharmacyService.insert(userData)
-        res.send(pharmacy)
-        } catch(e) {
-        next(e)
-        }
-})
+router.post('/', pharmacyController.registerNewPharmacy)
+
+router.post('/login', pharmacyController.loginPharmacy)
 
 router.post('/:pharmacyId/druglist', async (req, res) => {
     const { pharmacyId } = req.params

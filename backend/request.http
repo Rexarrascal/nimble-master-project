@@ -1,16 +1,16 @@
                 ### CUSTOMER ###
 ### CREATE A NEW CUSTOMER
-POST http://localhost:3000/signup HTTP/1.1
+POST http://localhost:3000/customers/login HTTP/1.1
 content-type: application/json
 
-{"name":"Erkan Test", "email": "test@test.com","password":"123456", "location": "Izmir", "age": 33}
+{"email": "test@test.com","password":"123456"}
 
 ###
 
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"name":"Erkan", "email": "test@test.com","password":"123456", "location": "Izmir", "age": 33}
+{"name":"Erkan", "email": "test@test.com", "password":"123456", "location": "Izmir", "age": 33}
 
 ### GET A CUSTOMER
 
@@ -18,7 +18,7 @@ GET http://localhost:3000/customers/626427e86d758fefaf2f81ec HTTP/1.1
 
 ### DELETE A CUSTOMER
 
-DELETE http://localhost:3000/pharmacies/6263ea656bc96d2964f3a45f HTTP/1.1
+DELETE http://localhost:3000/customers/6297534c96b8cbfe1257d075 HTTP/1.1
 
 ### CREATE A NEW ORDER
 
@@ -37,10 +37,10 @@ content-type: application/json
 
 ### ADD A DRUG TO DRUGLIST
 
-POST https://backend-4m7nspnvoa-ew.a.run.app/pharmacies/6276dee481abc4741dfc04fd/druglist HTTP/1.1
+POST http://localhost:3000/pharmacies/6298c2cc448ae475e6c9943b/druglist HTTP/1.1
 content-type: application/json
 
-{"drugId":"6276def381abc4741dfc0500"}
+{"drugId":"62711733ea78c92e9299ff65"}
 
                 ### DRUGS ###
 ### CREATE A DRUG
@@ -57,6 +57,12 @@ content-type: application/json
 
 {"name": "Newer Drug"}
 
+### UPDATE A PHARMACY'S NAME
+
+PATCH http://localhost:3000/pharmacies/6298c2cc448ae475e6c9943b HTTP/1.1
+content-type: application/json
+
+{"name": "Drug Store"}
 
 
 
