@@ -1,12 +1,7 @@
 <script>
 import { mapActions } from "vuex";
-const swal = require('sweetalert')
-import axios from 'axios'
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
-console.log('base url', axios.defaults.baseURL)
 
 export default {
-  name: "Login",
   data() {
     return {
       accType: "Customer",
@@ -16,39 +11,9 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const login = {
-        email: this.email,
-        password: this.password,
-      };
-      if (this.accType === "Customer") {
-        try {
-          let response = await axios.post("/customers/login", login);
-          let token = response.data.token;
-          localStorage.setItem("jwt", token);
-          if (token) {
-            swal("Success", "Login Successful", "success");
-            this.$router.push("/");
-          }
-        } catch (err) {
-          swal("Error", "Something Went Wrong", "error");
-          console.log(err.response);
-        }
-      }
-      else if (this.accType === "Pharmacy") {
-        try {
-          let response = await axios.post("/pharmacies/login", login);
-          let token = response.data.token;
-          localStorage.setItem("jwt", token);
-          if (token) {
-            swal("Success", "Login Successful", "success");
-            this.$router.push("/");
-          }
-        } catch (err) {
-          swal("Error", "Something Went Wrong", "error");
-          console.log(err.response);
-        }
-      }
-    }
+      this.$store.dispatch('login', {accType: this.accType, email: this.email, password: this.password})
+    },
+    
   }
 }
 </script>

@@ -2,7 +2,6 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: "PharmaciesView",
   data() {
     return {
       pharmacies: [],

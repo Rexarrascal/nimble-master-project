@@ -1,5 +1,7 @@
 import axios from 'axios'
+import router from '../router'
 import { createStore } from 'vuex'
+import swal from 'sweetalert'
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
 console.log('base url', axios.defaults.baseURL)
@@ -12,10 +14,14 @@ const Mutations = {
 export default createStore({
   state: {
     countHome: 0,
-    countAbout: 3
+    countAbout: 3,
+    token: '',
   },
 
   getters: {
+    isAuthenticated(state) {
+      return state.token !== ''
+    }
   },
 
   mutations: {
@@ -26,16 +32,96 @@ export default createStore({
       if (state[type] === 0) return
 
       type === 'countHome' ? state.countHome-- : state.countAbout--
+    },
+
+    setToken(state, token) {
+      state.token = token
+    },
+    clearToken(state) {
+      state.token = ''
     }
   },
 
   actions: {
+    initAuth({ commit, dispatch }){
+      const token = localStorage.getItem('token')
+      if(token) {
+        commit('setToken', token)
+      } else {
+        return false
+      }
+    },
+
+    async login({ commit, dispatch, state}, authData) {
+      const login = {
+        email: authData.email,
+        password: authData.password,
+      };
+      try {
+        if (authData.accType === "Customer") {
+          var response = await axios.post("/customers/login", login);
+        } else if (authData.accType === "Pharmacy"){
+          var response = await axios.post("/pharmacies/login", login);
+        }
+          const token = response.data.token;
+          localStorage.setItem("token", token);
+          if (token) {
+            console.log(response)
+            swal("Success", "Login Successful", "success");
+            router.push("/");
+            commit('setToken', token)
+          }
+      } catch (err) {
+        swal("Error", err.response.data.message , "error");
+        console.log(err.response);
+      }
+    },
+
+    async register({ commit, dispatch, state}, authData) {
+      const register = {
+        name: authData.name,
+        email: authData.email,
+        password: authData.password
+      }
+    try {
+      if (authData.accType === "Customer") {
+        var response = await axios.post("/customers", register);
+      } else if ( authData.accType === "Pharmacy" ) {
+        var response = await axios.post("/pharmacies", register);
+      }
+        console.log(response)
+        const token = response.data.token;
+        if (token) {
+          localStorage.setItem("token", token);
+          router.push("/");
+          commit('setToken', token)
+          swal("Success", "Successfully Registered", "success");
+        } else {
+          swal("Error", "Something Went Wrong", "error");
+        }
+      } catch (err) {
+        let error = err.response;
+        if (error.status) {
+          swal("Error", error.data.message, "error");
+        } else {
+          swal("Error", error.data.err.message, "error");
+        }
+      }
+    },
+
+    logout({ commit, dispatch, state}, authData) {
+      commit('clearToken')
+      localStorage.removeItem('token')
+    },
+
     increment ({ commit }, type) {
       commit(Mutations.INCREMENT, type)
     },
+
     decrement ({ commit }, type) {
       commit(Mutations.DECREMENT, type)
     },
+    
     async fetchCustomers () {
       const request = await axios.get('/customers')
       return request.data
@@ -66,35 +152,6 @@ export default createStore({
       })
       return request.data
     },
-
-    // async registerUser (ctx, { name, email, password, passwordAgain, accType }) {
-    //   if (this.password === this.passwordAgain && this.password.length > 5) {
-    //     this.passwordError = "";
-    //     const data = {
-    //       name: this.name,
-    //       email: this.email,
-    //       password: this.password,
-    //       accType: this.accType,
-    //     };
-    //     if (this.accType === "Customer") {
-    //       const request = await axios.post(
-    //         "/customers",
-    //         data
-    //       );
-    //       return request.data
-    //     } else {
-    //       const request = await axios.post(
-    //         "/pharmacies",
-    //         data
-    //       );
-    //       return request
-    //     }
-    //   } else if (this.password.length <= 5) {
-    //     this.passwordError = "Password must be at least 6 chars long";
-    //   } else if (this.password !== this.passwordAgain) {
-    //     this.passwordError = "Passwords need to match";
-    //   }
-    // }
   },
 
   modules: {

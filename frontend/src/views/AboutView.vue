@@ -3,7 +3,6 @@ import Counter from "@/components/Counter";
 import { mapState } from "vuex";
 
 export default {
-  name: "AboutView",
   components: {
     Counter,
   },

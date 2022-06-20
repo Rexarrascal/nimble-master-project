@@ -1,7 +1,7 @@
 <script>
 import { mapActions } from "vuex";
+
 export default {
-  name: "PharmacyView",
   data() {
     return {
       isLoading: true,

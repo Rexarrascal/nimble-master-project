@@ -1,11 +1,6 @@
 <script>
-import axios from 'axios'
-const swal = require('sweetalert')
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || 'http://localhost:3000'
-console.log('base url', axios.defaults.baseURL)
 
 export default {
-  name: "SignupView",
   data() {
     return {
       accType: "Customer",
@@ -21,61 +16,15 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const register = {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      }
       if (this.password === this.passwordAgain && this.password.length > 5) {
         this.passwordError = "";
-        if (this.accType === "Customer") {
-          try {
-            let response = await axios.post("/customers", register);
-            console.log(response);
-            let token = response.data.token;
-            if (token) {
-              localStorage.setItem("jwt", token);
-              this.$router.push("/login");
-              swal("Success", "Successfully Registered", "success");
-            } else {
-              swal("Error", "Something Went Wrong", "error");
-            }
-          } catch (err) {
-            let error = err.response;
-            if (error.status == 409) {
-              swal("Error", error.data.message, "error");
-            } else {
-              swal("Error", error.data.err.message, "error");
-            }
-          }
-        } else if (this.accType === "Pharmacy" ) {
-          try {
-            let response = await axios.post("/pharmacies", register);
-            console.log(response);
-            let token = response.data.token;
-            if (token) {
-              localStorage.setItem("jwt", token);
-              this.$router.push("/login");
-              swal("Success", "Successfully Registered", "success");
-            } else {
-              swal("Error", "Something Went Wrong", "error");
-            }
-          } catch (err) {
-            let error = err.response;
-            if (error.status == 409) {
-              swal("Error", error.data.message, "error");
-            } else {
-              swal("Error", error.data.err.message, "error");
-            }
-          }
-        };
+        this.$store.dispatch('register', {accType:this.accType, name: this.name, email: this.email, password:this.password})
       } else if (this.password.length <= 5) {
         this.passwordError = "Password must be at least 6 chars long";
       } else if (this.password !== this.passwordAgain) {
         this.passwordError = "Passwords need to match";
       }
     },
-
   },
 };
 </script>
