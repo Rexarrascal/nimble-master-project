@@ -30,7 +30,7 @@ exports.loginPharmacy = async (req, res) => {
     const token = await pharmacy.generateAuthToken();
     res.status(201).json({ pharmacy, token });
   } catch (err) {
-    res.status(400).json({ err: err });
+    res.status(400).json({ message: "Email or password is invalid" });
   }
 };
 

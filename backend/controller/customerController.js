@@ -4,7 +4,7 @@ exports.registerNewCustomer = async (req, res) => {
   try {
     const isCustomer = await Customer.findOne( {email:req.body.email} );
     if (isCustomer) {
-      return res.status(409).json({message:'This email already registered'});
+      return res.status(409).json({message:'This email already in use.'});
     }
     const customer = new Customer({
       name: req.body.name,
@@ -26,12 +26,12 @@ exports.loginCustomer = async (req, res) => {
     const password = req.body.password;
     const customer = await Customer.findByCredentials(email, password);
     if (!customer) {
-      return res.status(401).json({ error: "Login failed! Check authentication credentials" });
+      return res.status(400).json({ error: "Login failed! Check authentication credentials" });
     }
     const token = await customer.generateAuthToken();
     res.status(201).json({ customer, token });
-  } catch (error) {
-    res.status(400).json({ error: error });
+  } catch (err) {
+    res.status(400).json({ message: "Email or password is invalid" });
   }
 };
 
