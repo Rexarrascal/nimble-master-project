@@ -1,22 +1,27 @@
 <script>
+import { mapActions, mapGetters, mapState } from 'vuex';
+
 export default {
   data() {
     return {
-      isUser : '',
     }
   },
 
   methods : {
-    logout() {
-      this.$store.dispatch('logout')
-    }
+    ...mapActions(['logout']),
+    // logout() {
+    //   this.$store.dispatch('logout')
+    // }
   },
   computed : {
-    logoutClass() {
-      return {
-        isUser : !this.$store.getters.isAuthenticated
-      }
-    }
+    ...mapState(['token']),
+    // ...mapGetters(['isAuthenticated']),
+    // logoutClass() {
+    //   return {
+    //     isUser : !isAuthenticated
+    //     // isUser : !this.$store.getters.isAuthenticated
+    //   }
+    // },
   }
 };
 </script>
@@ -60,15 +65,15 @@ export default {
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item">
+          <li class="nav-item" v-if="!token">
             <router-link class="nav-link" to="/signup">
               <span class="glyphicon glyphicon-user"></span>  Register </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!token">
             <router-link class="nav-link" to="/login">
               <span class="glyphicon glyphicon-log-in"></span>  Login </router-link>
           </li>
-          <li class="nav-item" :class="logoutClass" >
+          <li class="nav-item" v-if="token" >
             <router-link class="nav-link" to="/" @click.prevent="logout">
               <span class="glyphicon glyphicon-log-in"></span>  Logout </router-link>
           </li>
