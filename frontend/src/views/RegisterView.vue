@@ -29,55 +29,40 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.signUp
-  form(@submit.prevent="handleSubmit" action="/")
-    label Account type:
-    select(v-model="accType")
-      option(value="Customer") Customer
-      option(value="Pharmacy") Pharmacy
-
-    label Fullname:
-    input(type="text" required v-model="name" placeholder="")
-
-    //- label Surname:
-    //- input(type="text" required v-model="surname" placeholder="Example")
-
-    label Email:
-    input(type="email" required v-model="email" placeholder="")
-
-    //- label Phone:
-    //- input(type="number" v-model="phone")
-
-    label Password:
-    input(type="password" required v-model="password")
-    .error(v-if="passwordError")
-      | {{ passwordError }}
-
-    label Password Again:
-    input(type="password" required v-model="passwordAgain")
-
-    //- label Birth of Date:
-    //- input(type="date" required v-model="birthDate")
-
-    .terms
-      input(type="checkbox" required v-model="terms")
-      label Accept terms and conditions
-
-    .submit
-      button(type="submit" class="btn btn-success") Sign Up
-      br
-
-    router-link(class="card-link" id="hello" style="text-align:center" to="/login") Already have an accout ?
-
-    br
-    br
-    br 
-    p Name: {{ name }}
-    p Acc Type: {{ accType }}
-    p Terms: {{ terms }}
-    p Password: {{ password }}
-    p Re-Password : {{ passwordAgain }}
+<template>
+  <div class="signUp">
+    <form @submit.prevent="handleSubmit" action="/">
+      <label>Account type:</label>
+      <select v-model="accType">
+        <option value="Customer">Customer</option>
+        <option value="Pharmacy">Pharmacy</option>
+      </select>
+      <label>Fullname:</label>
+      <input type="text" required="required" v-model="name" placeholder=""/>
+      <label>Email:</label>
+      <input type="email" required="required" v-model="email" placeholder=""/>
+      <label>Password:</label>
+      <input type="password" required="required" v-model="password"/>
+      <div class="error" v-if="passwordError">{{ passwordError }}</div>
+      <label>Password Again:</label>
+      <input type="password" required="required" v-model="passwordAgain"/>
+      <div class="terms">
+        <input type="checkbox" required="required" v-model="terms"/>
+        <label>Accept terms and conditions</label>
+      </div>
+      <div class="submit">
+        <button class="btn btn-success" type="submit">Sign Up</button><br/>
+      </div>
+      <router-link class="card-link" id="hello" style="text-align:center" to="/login">Already have an accout ?</router-link>
+      
+      <br/><br/><br/>
+      <p>Name: {{ name }}</p>
+      <p>Acc Type: {{ accType }}</p>
+      <p>Terms: {{ terms }}</p>
+      <p>Password: {{ password }}</p>
+      <p>Re-Password : {{ passwordAgain }}</p>
+    </form>
+  </div>
 </template>
 
 <style scoped lang="scss">

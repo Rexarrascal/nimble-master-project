@@ -20,17 +20,19 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.pharmacy
-  p(v-if="isLoading") Please wait...
-  div(v-else)
-    h2 Pharmacy Detail
-    h3 {{ pharmacy.name }} / {{ pharmacy.location }}
-
-    h4 Druglist
-    div(v-if="pharmacy.druglist.length")
-      ol
-        li(v-for="drug in pharmacy.druglist")
-          |{{ drug.name }}
-    p(v-else) There is no item in {{ pharmacy.name }}'s inventory
+<template>
+  <div class="pharmacy">
+    <p v-if="isLoading">Please wait...</p>
+    <div v-else>
+      <h2>Pharmacy Detail</h2>
+      <h3>{{ pharmacy.name }} / {{ pharmacy.location }}</h3>
+      <h4>Druglist</h4>
+      <div v-if="pharmacy.druglist.length">
+        <ol>
+          <li v-for="drug in pharmacy.druglist">{{ drug.name }}</li>
+        </ol>
+      </div>
+      <p v-else>There is no item in {{ pharmacy.name }}'s inventory</p>
+    </div>
+  </div>
 </template>

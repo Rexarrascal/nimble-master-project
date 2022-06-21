@@ -13,8 +13,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.about
-  h1 This is an about page
-  Counter(type="countAbout" :count="countAbout" msg="")
+<template>
+  <div class="about">
+    <h1>This is an about page</h1>
+    <Counter type="countAbout" :count="countAbout" msg="" />
+  </div>
 </template>

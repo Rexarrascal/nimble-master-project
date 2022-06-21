@@ -19,14 +19,17 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.home
-  h1 Customers
-  p(v-if="isLoading") Please wait...
-  div(v-else)
-    p There are {{customers.length}} customers waiting...
-
-    ol
-      li(v-for="customer in customers")
-        a(:href="`/customers/${customer._id}`") {{ customer.name }}
+<template>
+<div class="home">
+  <h1>Customers</h1>
+  <p v-if="isLoading">Please wait...</p>
+  <div v-else>
+    <p>There are {{customers.length}} customers waiting...</p>
+    <ol>
+      <li v-for="customer in customers">
+        <a :href="`/customers/${customer._id}`">{{ customer.name }}</a>
+      </li>
+    </ol>
+  </div>
+</div>
 </template>

@@ -19,14 +19,17 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.home
-  h1 Drugs
-  p(v-if="isLoading") Please wait...
-  div(v-else)
-    p There are {{drugs.length}} drugs waiting...
-
-    ol
-      li(v-for="drug in drugs")
-        a(:href="`/drugs/${drug._id}`") {{ drug.name }}
+<template>
+  <div class="home">
+    <h1>Drugs</h1>
+    <p v-if="isLoading">Please wait...</p>
+    <div v-else>
+      <p>There are {{drugs.length}} drugs waiting...</p>
+      <ol>
+        <li v-for="drug in drugs">
+          <a :href="`/drugs/${drug._id}`">{{ drug.name }}</a>
+        </li>
+      </ol>
+    </div>
+  </div>
 </template>

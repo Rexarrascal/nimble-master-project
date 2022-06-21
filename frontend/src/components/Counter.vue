@@ -14,12 +14,13 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.hello
-  p {{ msg }}
-  .counter {{ count }}
-  button.increment(@click="increment(type)") Increment
-  button.decrement(@click="decrement(type)") Decrement
+<template>
+  <div class="hello">
+    <p>{{ msg }}</p>
+    <div class="counter">{{ count }}</div>
+    <button class="increment" @click="increment(type)">Increment</button>
+    <button class="decrement" @click="decrement(type)">Decrement</button>
+  </div>
 </template>
 
 <style scoped lang="scss">

@@ -18,24 +18,24 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.login
-  form(action="/")
-    label Account type:
-    select(v-model="accType")
-      option(value="Customer") Customer
-      option(value="Pharmacy") Pharmacy
-
-    label Email:
-    input(type="email" required v-model="email" placeholder="")
-
-    label Password:
-    input(type="password" required v-model="password")
-    
-    .submit
-      button(@click="handleSubmit" type="button" class="btn btn-success") Login
-    
-    router-link(class="card-link" id="hello" to="/signup") Need an account ?
+<template>
+  <div class="login">
+    <form action="/">
+      <label>Account type:</label>
+      <select v-model="accType">
+        <option value="Customer">Customer</option>
+        <option value="Pharmacy">Pharmacy</option>
+      </select>
+      <label>Email:</label>
+      <input type="email" required="required" v-model="email" placeholder=""/>
+      <label>Password:</label>
+      <input type="password" required="required" v-model="password"/>
+      <div class="submit">
+        <button class="btn btn-success" @click="handleSubmit" type="button">Login</button><br/>
+        <router-link class="card-link" id="hello" to="/signup">Need an account ?</router-link>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped lang="scss">

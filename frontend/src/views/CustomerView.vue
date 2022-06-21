@@ -31,29 +31,41 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.customer
-  p(v-if="isLoading") Please wait...
-  div(v-else)
-    h2 Customer Detail
-    h3 {{ customer.name }} / {{ customer.age }}
-
-    h4 Order History
-    div(v-if="customer.orders.length")
-      ol
-        li(v-for="order in customer.orders")
-          | {{ customer.name }} wants to order a(an) {{ order.drug.name }} from {{ order.pharmacy.name }}
-    p(v-else) No orders.
-    h3 Create New Order
-    h4 Pharmacies
-    div(v-if="pharmacies.length")
-      ol
-        li(v-for="pharmacy in pharmacies" class="pharmacy")
-          | <strong>{{ pharmacy.name }}</strong>
-          ul
-            li(v-for="drug in pharmacy.druglist" class="drug")
-              | {{ drug.name }}
-              button.order(@click="orderDrugAndUpdate({pharmacyId: pharmacy._id, customerId: customer._id, drugId: drug._id})") +
+<template>
+  <div class="customer">
+    <p v-if="isLoading">Please wait...</p>
+    <div v-else>
+      <h2>Customer Detail</h2>
+      <h3>{{ customer.name }} / {{ customer.age }}</h3>
+      <h4>Order History</h4>
+      <div v-if="customer.orders.length">
+        <ol>
+          <li v-for="order in customer.orders">{{ customer.name }} wants to order a(an) {{ order.drug.name }} from {{ order.pharmacy.name }}</li>
+        </ol>
+      </div>
+      <p v-else>No orders.</p>
+      <h3>Create New Order</h3>
+      <h4>Pharmacies</h4>
+      <div v-if="pharmacies.length">
+        <ol>
+          <li class="pharmacy" v-for="pharmacy in pharmacies"><strong>{{ pharmacy.name }}</strong>
+            <ul>
+              <li class="drug" v-for="drug in pharmacy.druglist">
+                {{ drug.name }}
+                <button class="order" 
+                        @click="orderDrugAndUpdate({
+                          pharmacyId: pharmacy._id, 
+                          customerId: customer._id, 
+                          drugId: drug._id})">
+                          +
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
