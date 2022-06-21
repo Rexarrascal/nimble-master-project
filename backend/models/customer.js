@@ -33,7 +33,7 @@ CustomerSchema.pre("save", async function(next) {
 CustomerSchema.methods.generateAuthToken = async function() {
     const customer = this;
     const token = jwt.sign({ _id: customer._id, name: customer.name, email: customer.email },
-    "secret");
+    "secret", { expiresIn:'20'});
     customer.tokens = customer.tokens.concat({ token });
     await customer.save();
     return token;
