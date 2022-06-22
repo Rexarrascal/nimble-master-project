@@ -25,7 +25,7 @@ export default {
   <div v-else>
     <p>There are {{ pharmacies.length }} Pharmacies waiting...</p>
     <ol>
-      <li v-for="pharmacy in pharmacies">
+      <li v-for="pharmacy in pharmacies" :key="pharmacy">
         <a :href="`/pharmacies/${pharmacy._id}`">{{ pharmacy.name }}</a>
       </li>
     </ol>

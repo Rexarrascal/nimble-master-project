@@ -7,6 +7,7 @@ import store from './store'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
+
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Vue.use(BootstrapVue)
 // Vue.use(IconsPlugin)

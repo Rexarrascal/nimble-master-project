@@ -29,7 +29,7 @@ export default {
       <h4>Druglist</h4>
       <div v-if="pharmacy.druglist.length">
         <ol>
-          <li v-for="drug in pharmacy.druglist">{{ drug.name }}</li>
+          <li v-for="drug in pharmacy.druglist" :key="drug">{{ drug.name }}</li>
         </ol>
       </div>
       <p v-else>There is no item in {{ pharmacy.name }}'s inventory</p>

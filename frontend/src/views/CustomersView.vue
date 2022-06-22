@@ -26,7 +26,7 @@ export default {
   <div v-else>
     <p>There are {{customers.length}} customers waiting...</p>
     <ol>
-      <li v-for="customer in customers">
+      <li v-for="customer in customers" :key="customer">
         <a :href="`/customers/${customer._id}`">{{ customer.name }}</a>
       </li>
     </ol>

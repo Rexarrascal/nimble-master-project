@@ -26,7 +26,7 @@ export default {
     <div v-else>
       <p>There are {{drugs.length}} drugs waiting...</p>
       <ol>
-        <li v-for="drug in drugs">
+        <li v-for="drug in drugs" :key="drug">
           <a :href="`/drugs/${drug._id}`">{{ drug.name }}</a>
         </li>
       </ol>

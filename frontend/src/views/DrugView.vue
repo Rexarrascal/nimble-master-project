@@ -27,7 +27,7 @@ export default {
       <div v-if="drug.sellers.length">
         <h4>Seller List</h4>
         <ol>
-          <li v-for="pharmacy in drug.sellers">{{ pharmacy.name }}.</li>
+          <li v-for="pharmacy in drug.sellers" :key="pharmacy">{{ pharmacy.name }}.</li>
         </ol>
       </div>
       <p v-else>There is not a stock in the pharmacies.</p>

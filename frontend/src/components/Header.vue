@@ -24,10 +24,11 @@ export default {
     // },
   }
 };
+
 </script>
 
 <template>
-
+  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Drug Order App</a>
@@ -81,5 +82,5 @@ export default {
       </div>
     </div>
   </nav>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
 </template>
