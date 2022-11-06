@@ -1,43 +1,43 @@
-const { pharmacyService } = require('../services')
-const pharmacyController = require('../controller/pharmacyContoller')
-const router = require('express').Router()
+const { pharmacyService } = require("../services");
+const pharmacyController = require("../controller/pharmacyContoller");
+const router = require("express").Router();
 
-router.get('/', async (req, res) => {
-    res.send(await pharmacyService.load())
-})
+router.get("/", async (req, res) => {
+  res.send(await pharmacyService.load());
+});
 
-router.post('/', pharmacyController.registerNewPharmacy)
+router.post("/", pharmacyController.registerNewPharmacy);
 
-router.post('/login', pharmacyController.loginPharmacy)
+router.post("/login", pharmacyController.loginPharmacy);
 
-router.post('/:pharmacyId/druglist', async (req, res) => {
-    const { pharmacyId } = req.params
-    const { drugId } = req.body
+router.post("/:pharmacyId/druglist", async (req, res) => {
+  const { pharmacyId } = req.params;
+  const { drugId } = req.body;
 
-    await pharmacyService.addDrug(pharmacyId, drugId)
+  await pharmacyService.addDrug(pharmacyId, drugId);
 
-    res.send(`${drugId.name} added to ${pharmacyId.name}'s inventory`)
-})
+  res.send(`${drugId.name} added to ${pharmacyId.name}'s inventory`);
+});
 
-router.delete('/:pharmacyId', async (req, res) => {
-    await pharmacyService.removeBy('id', req.params.pharmacyId)
+router.delete("/:pharmacyId", async (req, res) => {
+  await pharmacyService.removeBy("id", req.params.pharmacyId);
 
-    res.send(`Pharmacy Deleted`)
-})
+  res.send(`Pharmacy Deleted`);
+});
 
-router.get('/:pharmacyId', async (req, res) => {
-    const pharmacy = await pharmacyService.find(req.params.pharmacyId)
-    if (!pharmacy) return res.status(404).send('Cannot find pharmacy')
-    res.send(pharmacy)
-})
+router.get("/:pharmacyId", async (req, res) => {
+  const pharmacy = await pharmacyService.find(req.params.pharmacyId);
+  if (!pharmacy) return res.status(404).send("Cannot find pharmacy");
+  res.send(pharmacy);
+});
 
-router.patch('/:pharmacyId', async (req, res) => {
-    const { pharmacyId } = req.params
-    const { name } = req.body
-  
-    await pharmacyService.update(pharmacyId, { name })
+router.patch("/:pharmacyId", async (req, res) => {
+  const { pharmacyId } = req.params;
+  const { name } = req.body;
 
-    res.send(`The name of the pharmacy changed to ${name}`)
-  })
+  await pharmacyService.update(pharmacyId, { name });
 
-module.exports = router
+  res.send(`The name of the pharmacy changed to ${name}`);
+});
+
+module.exports = router;

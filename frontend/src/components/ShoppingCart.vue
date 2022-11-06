@@ -1,10 +1,5 @@
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
-<template>
-  
-</template>
-
+<template></template>

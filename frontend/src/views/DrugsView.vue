@@ -24,7 +24,7 @@ export default {
     <h1>Drugs</h1>
     <p v-if="isLoading">Please wait...</p>
     <div v-else>
-      <p>There are {{drugs.length}} drugs waiting...</p>
+      <p>There are {{ drugs.length }} drugs waiting...</p>
       <ol>
         <li v-for="drug in drugs" :key="drug">
           <a :href="`/drugs/${drug._id}`">{{ drug.name }}</a>

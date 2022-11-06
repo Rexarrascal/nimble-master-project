@@ -20,16 +20,16 @@ export default {
 </script>
 
 <template>
-<div class="home">
-  <h1>Customers</h1>
-  <p v-if="isLoading">Please wait...</p>
-  <div v-else>
-    <p>There are {{customers.length}} customers waiting...</p>
-    <ol>
-      <li v-for="customer in customers" :key="customer">
-        <a :href="`/customers/${customer._id}`">{{ customer.name }}</a>
-      </li>
-    </ol>
+  <div class="home">
+    <h1>Customers</h1>
+    <p v-if="isLoading">Please wait...</p>
+    <div v-else>
+      <p>There are {{ customers.length }} customers waiting...</p>
+      <ol>
+        <li v-for="customer in customers" :key="customer">
+          <a :href="`/customers/${customer._id}`">{{ customer.name }}</a>
+        </li>
+      </ol>
+    </div>
   </div>
-</div>
 </template>

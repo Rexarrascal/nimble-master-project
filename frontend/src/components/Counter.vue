@@ -1,17 +1,17 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-  name: 'CounterComponent',
+  name: "CounterComponent",
   props: {
     msg: String,
     type: String,
-    count: Number
+    count: Number,
   },
   methods: {
-    ...mapActions(['increment', 'decrement'])
-  }
-}
+    ...mapActions(["increment", "decrement"]),
+  },
+};
 </script>
 
 <template>
@@ -23,5 +23,4 @@ export default {
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

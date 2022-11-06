@@ -1,50 +1,50 @@
-const { customerService, orderService } = require('../services')
-const customerController = require('../controller/customerController')
-const router = require('express').Router()
+const { customerService, orderService } = require("../services");
+const customerController = require("../controller/customerController");
+const router = require("express").Router();
 
-router.get('/', async (req, res) => {
-    const customers = await customerService.load()
+router.get("/", async (req, res) => {
+  const customers = await customerService.load();
 
-    res.send( customers )
-})
+  res.send(customers);
+});
 
-router.post('/', customerController.registerNewCustomer)
+router.post("/", customerController.registerNewCustomer);
 
-router.post('/login', customerController.loginCustomer)
+router.post("/login", customerController.loginCustomer);
 
-router.delete('/:customerId', async (req, res) => {
-  const customer = await customerService.find(req.params.customerId)
-    
-  if (!customer) return res.status(404).send('Cannot find customer')
+router.delete("/:customerId", async (req, res) => {
+  const customer = await customerService.find(req.params.customerId);
 
-  await customerService.removeBy('id', req.params.customerId)
+  if (!customer) return res.status(404).send("Cannot find customer");
 
-  res.send('Customer Deleted')
-})
+  await customerService.removeBy("id", req.params.customerId);
 
-router.get('/:customerId', async (req, res) => {
-    const customer = await customerService.find(req.params.customerId)
-    
-    if (!customer) return res.status(404)
-    res.send(customer)
-})
+  res.send("Customer Deleted");
+});
 
-router.post('/:customerId/orders', async (req, res) => {
-    const { customerId } = req.params
-    const { pharmacyId, drugId } = req.body
+router.get("/:customerId", async (req, res) => {
+  const customer = await customerService.find(req.params.customerId);
 
-    const order = await orderService.order(pharmacyId, customerId, drugId)
-    
-    res.send(order)
-})
+  if (!customer) return res.status(404);
+  res.send(customer);
+});
 
-router.patch('/:customerId', async (req, res) => {
-    const { customerId } = req.params
-    const { name } = req.body
-  
-    await customerService.update(customerId, { name })
+router.post("/:customerId/orders", async (req, res) => {
+  const { customerId } = req.params;
+  const { pharmacyId, drugId } = req.body;
 
-    res.send(`The name of the customer changed to ${name}`)
-  })
+  const order = await orderService.order(pharmacyId, customerId, drugId);
 
-module.exports = router
+  res.send(order);
+});
+
+router.patch("/:customerId", async (req, res) => {
+  const { customerId } = req.params;
+  const { name } = req.body;
+
+  await customerService.update(customerId, { name });
+
+  res.send(`The name of the customer changed to ${name}`);
+});
+
+module.exports = router;

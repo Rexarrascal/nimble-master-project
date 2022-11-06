@@ -1,66 +1,65 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CustomersView from '../views/CustomersView.vue'
-import CustomerView from '../views/CustomerView.vue'
-import PharmaciesView from '../views/PharmaciesView.vue'
-import PharmacyView from '../views/PharmacyView.vue'
-import DrugsView from '../views/DrugsView.vue'
-import DrugView from '../views/DrugView.vue'
-import RegisterView from '../views/RegisterView'
-import LoginView from '../views/LoginView'
-import AboutView from '../views/AboutView'
-
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import CustomersView from "../views/CustomersView.vue";
+import CustomerView from "../views/CustomerView.vue";
+import PharmaciesView from "../views/PharmaciesView.vue";
+import PharmacyView from "../views/PharmacyView.vue";
+import DrugsView from "../views/DrugsView.vue";
+import DrugView from "../views/DrugView.vue";
+import RegisterView from "../views/RegisterView";
+import LoginView from "../views/LoginView";
+import AboutView from "../views/AboutView";
 
 const routes = [
   {
-    path: '/',
-    name: 'HomeView',
-    component: HomeView
+    path: "/",
+    name: "HomeView",
+    component: HomeView,
   },
   {
-    path: '/customers',
-    name: 'CustomersView',
-    component: CustomersView
+    path: "/customers",
+    name: "CustomersView",
+    component: CustomersView,
   },
   {
-    path: '/customers/:customerId',
-    name: 'CustomerView',
-    component: CustomerView
+    path: "/customers/:customerId",
+    name: "CustomerView",
+    component: CustomerView,
   },
   {
-    path: '/pharmacies',
-    name: 'PharmaciesView',
-    component: PharmaciesView
+    path: "/pharmacies",
+    name: "PharmaciesView",
+    component: PharmaciesView,
   },
   {
-    path: '/pharmacies/:pharmacyId',
-    name: 'PharmacyView',
-    component: PharmacyView
+    path: "/pharmacies/:pharmacyId",
+    name: "PharmacyView",
+    component: PharmacyView,
   },
   {
-    path: '/drugs',
-    name: 'DrugsView',
-    component: DrugsView
+    path: "/drugs",
+    name: "DrugsView",
+    component: DrugsView,
   },
   {
-    path: '/drugs/:drugId',
-    name: 'DrugView',
-    component: DrugView
+    path: "/drugs/:drugId",
+    name: "DrugView",
+    component: DrugView,
   },
   {
-    path: '/about',
-    name: 'AboutView',
-    component: AboutView
+    path: "/about",
+    name: "AboutView",
+    component: AboutView,
   },
   {
-    path: '/signup',
+    path: "/signup",
     name: "RegisterView",
-    component: RegisterView
+    component: RegisterView,
   },
   {
-    path: '/login',
+    path: "/login",
     name: "LoginView",
-    component: LoginView
+    component: LoginView,
   },
   // {
   //   path: '/dashboard',
@@ -70,18 +69,18 @@ const routes = [
   //     requiresAuth: true
   //   }
   // },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (localStorage.getItem("jwt") == null) {
       next({
-        path: "/"
+        path: "/",
       });
     } else {
       next();
@@ -91,4 +90,4 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-export default router
+export default router;

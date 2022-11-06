@@ -1,5 +1,5 @@
 <script>
-import Header from './components/Header.vue'
+import Header from "./components/Header.vue";
 
 export default {
   components: {
@@ -7,21 +7,18 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('initAuth')
-  }
-}
+    this.$store.dispatch("initAuth");
+  },
+};
 </script>
 
 <template>
-<div>
-  <Header />
+  <div>
+    <Header />
     <div class="container">
       <router-view />
     </div>
-</div>
-
+  </div>
 </template>
 
-<style>
-
-</style>
+<style></style>

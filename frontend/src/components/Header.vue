@@ -1,34 +1,21 @@
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   data() {
-    return {
-    }
+    return {};
   },
 
-  methods : {
-    ...mapActions(['logout']),
-    // logout() {
-    //   this.$store.dispatch('logout')
-    // }
+  methods: {
+    ...mapActions(["logout"]),
   },
-  computed : {
-    ...mapState(['token']),
-    // ...mapGetters(['isAuthenticated']),
-    // logoutClass() {
-    //   return {
-    //     isUser : !isAuthenticated
-    //     // isUser : !this.$store.getters.isAuthenticated
-    //   }
-    // },
-  }
+  computed: {
+    ...mapState(["token"]),
+  },
 };
-
 </script>
 
 <template>
-  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Drug Order App</a>
@@ -54,13 +41,19 @@ export default {
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <router-link class="dropdown-item" to="/customers">Customers</router-link>
+                <router-link class="dropdown-item" to="/customers"
+                  >Customers</router-link
+                >
               </li>
               <li>
-                <router-link class="dropdown-item" to="/pharmacies">Pharmacies</router-link>
+                <router-link class="dropdown-item" to="/pharmacies"
+                  >Pharmacies</router-link
+                >
               </li>
               <li>
-                <router-link class="dropdown-item" to="/drugs">Drugs</router-link>
+                <router-link class="dropdown-item" to="/drugs"
+                  >Drugs</router-link
+                >
               </li>
             </ul>
           </li>
@@ -68,19 +61,21 @@ export default {
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item" v-if="!token">
             <router-link class="nav-link" to="/signup">
-              <span class="glyphicon glyphicon-user"></span>  Register </router-link>
+              <span class="glyphicon glyphicon-user"></span> Register
+            </router-link>
           </li>
           <li class="nav-item" v-if="!token">
             <router-link class="nav-link" to="/login">
-              <span class="glyphicon glyphicon-log-in"></span>  Login </router-link>
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            </router-link>
           </li>
-          <li class="nav-item" v-if="token" >
+          <li class="nav-item" v-if="token">
             <router-link class="nav-link" to="/" @click.prevent="logout">
-              <span class="glyphicon glyphicon-log-in"></span>  Logout </router-link>
+              <span class="glyphicon glyphicon-log-in"></span> Logout
+            </router-link>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
 </template>

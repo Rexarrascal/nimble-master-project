@@ -1,5 +1,4 @@
 <script>
-
 export default {
   data() {
     return {
@@ -18,7 +17,12 @@ export default {
     async handleSubmit() {
       if (this.password === this.passwordAgain && this.password.length > 5) {
         this.passwordError = "";
-        this.$store.dispatch('register', {accType:this.accType, name: this.name, email: this.email, password:this.password})
+        this.$store.dispatch("register", {
+          accType: this.accType,
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        });
       } else if (this.password.length <= 5) {
         this.passwordError = "Password must be at least 6 chars long";
       } else if (this.password !== this.passwordAgain) {
@@ -38,24 +42,30 @@ export default {
         <option value="Pharmacy">Pharmacy</option>
       </select>
       <label>Fullname:</label>
-      <input type="text" required="required" v-model="name" placeholder=""/>
+      <input type="text" required="required" v-model="name" placeholder="" />
       <label>Email:</label>
-      <input type="email" required="required" v-model="email" placeholder=""/>
+      <input type="email" required="required" v-model="email" placeholder="" />
       <label>Password:</label>
-      <input type="password" required="required" v-model="password"/>
+      <input type="password" required="required" v-model="password" />
       <div class="error" v-if="passwordError">{{ passwordError }}</div>
       <label>Password Again:</label>
-      <input type="password" required="required" v-model="passwordAgain"/>
+      <input type="password" required="required" v-model="passwordAgain" />
       <div class="terms">
-        <input type="checkbox" required="required" v-model="terms"/>
+        <input type="checkbox" required="required" v-model="terms" />
         <label>Accept terms and conditions</label>
       </div>
       <div class="submit">
-        <button class="btn btn-success" type="submit">Sign Up</button><br/>
+        <button class="btn btn-success" type="submit">Sign Up</button><br />
       </div>
-      <router-link class="card-link" id="hello" style="text-align:center" to="/login">Already have an accout ?</router-link>
-      
-      <br/><br/><br/>
+      <router-link
+        class="card-link"
+        id="hello"
+        style="text-align: center"
+        to="/login"
+        >Already have an accout ?</router-link
+      >
+
+      <br /><br /><br />
       <p>Name: {{ name }}</p>
       <p>Acc Type: {{ accType }}</p>
       <p>Terms: {{ terms }}</p>

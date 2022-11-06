@@ -7,15 +7,18 @@ export default {
       accType: "Customer",
       email: "",
       password: "",
-    }
+    };
   },
   methods: {
     async handleSubmit() {
-      this.$store.dispatch('login', {accType: this.accType, email: this.email, password: this.password})
+      this.$store.dispatch("login", {
+        accType: this.accType,
+        email: this.email,
+        password: this.password,
+      });
     },
-    
-  }
-}
+  },
+};
 </script>
 
 <template>
@@ -27,12 +30,16 @@ export default {
         <option value="Pharmacy">Pharmacy</option>
       </select>
       <label>Email:</label>
-      <input type="email" required="required" v-model="email" placeholder=""/>
+      <input type="email" required="required" v-model="email" placeholder="" />
       <label>Password:</label>
-      <input type="password" required="required" v-model="password"/>
+      <input type="password" required="required" v-model="password" />
       <div class="submit">
-        <button class="btn btn-success" @click="handleSubmit" type="button">Login</button><br/>
-        <router-link class="card-link" id="hello" to="/signup">Need an account ?</router-link>
+        <button class="btn btn-success" @click="handleSubmit" type="button">
+          Login</button
+        ><br />
+        <router-link class="card-link" id="hello" to="/signup"
+          >Need an account ?</router-link
+        >
       </div>
     </form>
   </div>
@@ -90,5 +97,4 @@ button {
   font-size: 0.8em;
   font-weight: bold;
 }
-
 </style>

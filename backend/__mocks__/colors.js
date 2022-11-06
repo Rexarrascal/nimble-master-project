@@ -1,9 +1,9 @@
-const colors = jest.createMockFromModule('colors')
+const colors = jest.createMockFromModule("colors");
 
-const unity = s => s
+const unity = (s) => s;
 
-colors.blue = unity
-colors.red = unity
-colors.yellow = unity
+colors.blue = unity;
+colors.red = unity;
+colors.yellow = unity;
 
-module.exports = colors
+module.exports = colors;

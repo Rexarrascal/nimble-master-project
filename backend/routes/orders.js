@@ -1,25 +1,25 @@
-const { orderService } = require('../services')
+const { orderService } = require("../services");
 
-const router = require('express').Router()
+const router = require("express").Router();
 
-router.get('/', async (req, res) => {
-    const orders = await orderService.load()
+router.get("/", async (req, res) => {
+  const orders = await orderService.load();
 
-    res.render('orders', { orders })
-})
+  res.render("orders", { orders });
+});
 
-router.get('/search', async (req, res) => {
-    const pharmacy = req.query.pharmacyId
-    const drug = req.query.drugId
+router.get("/search", async (req, res) => {
+  const pharmacy = req.query.pharmacyId;
+  const drug = req.query.drugId;
 
-    const query = {}
+  const query = {};
 
-    if (pharmacy) query.pharmacyId = pharmacy
-    if (drug) query.drugId = drug
+  if (pharmacy) query.pharmacyId = pharmacy;
+  if (drug) query.drugId = drug;
 
-    const orders = await orderService.query(query)
-   
-    res.render('orders', { orders })
-})
+  const orders = await orderService.query(query);
 
-module.exports = router
+  res.render("orders", { orders });
+});
+
+module.exports = router;

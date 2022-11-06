@@ -40,7 +40,10 @@ export default {
       <h4>Order History</h4>
       <div v-if="customer.orders.length">
         <ol>
-          <li v-for="order in customer.orders" :key="order">{{ customer.name }} wants to order a(an) {{ order.drug.name }} from {{ order.pharmacy.name }}</li>
+          <li v-for="order in customer.orders" :key="order">
+            {{ customer.name }} wants to order a(an) {{ order.drug.name }} from
+            {{ order.pharmacy.name }}
+          </li>
         </ol>
       </div>
       <p v-else>No orders.</p>
@@ -48,16 +51,22 @@ export default {
       <h4>Pharmacies</h4>
       <div v-if="pharmacies.length">
         <ol>
-          <li class="pharmacy" v-for="pharmacy in pharmacies" :key="pharmacy"><strong>{{ pharmacy.name }}</strong>
+          <li class="pharmacy" v-for="pharmacy in pharmacies" :key="pharmacy">
+            <strong>{{ pharmacy.name }}</strong>
             <ul>
               <li class="drug" v-for="drug in pharmacy.druglist" :key="drug">
                 {{ drug.name }}
-                <button class="order" 
-                        @click="orderDrugAndUpdate({
-                          pharmacyId: pharmacy._id, 
-                          customerId: customer._id, 
-                          drugId: drug._id})">
-                          +
+                <button
+                  class="order"
+                  @click="
+                    orderDrugAndUpdate({
+                      pharmacyId: pharmacy._id,
+                      customerId: customer._id,
+                      drugId: drug._id,
+                    })
+                  "
+                >
+                  +
                 </button>
               </li>
             </ul>

@@ -1,14 +1,14 @@
-version: 'version'
+version: "version"
 services:
   frontend:
     build: frontend
-    ports: 
+    ports:
       - 8080:8080
   backend:
     build: backend
     environment:
       MONGODB_CONNECTION_STRING: "mongodb://mongodb/drug-order-app"
-    ports: 
+    ports:
       - 3000:3000
   mongodb:
     image: mongo:5.0.7
