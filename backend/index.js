@@ -6,7 +6,6 @@ const customersRouter = require("./routes/customers");
 const pharmaciesRouter = require("./routes/pharmacies");
 const drugsRouter = require("./routes/drugs");
 const ordersRouter = require("./routes/orders");
-const meRouter = require("./routes/me");
 const indexRouter = require("./routes/index");
 require("./mongo-connection");
 const app = express();
