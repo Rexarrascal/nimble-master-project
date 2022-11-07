@@ -22,7 +22,6 @@ app.use("/customers", customersRouter);
 app.use("/pharmacies", pharmaciesRouter);
 app.use("/drugs", drugsRouter);
 app.use("/orders", ordersRouter);
-app.use("/me", meRouter);
 app.use("/", indexRouter);
 
 module.exports = app;
