@@ -73,7 +73,8 @@ export default createStore({
           commit("setToken", token);
         }
       } catch (err) {
-        swal("Error", err.response.data.message, "error");
+        const error = err.response.data
+        swal("Error", error.message, "error");
         console.log(err.response);
       }
     },
@@ -101,12 +102,9 @@ export default createStore({
           swal("Error", "Something Went Wrong", "error");
         }
       } catch (err) {
-        let error = err.response;
-        if (error.status) {
-          swal("Error", error.data.message, "error");
-        } else {
-          swal("Error", error.data.err.message, "error");
-        }
+        const error = err.response.data
+        swal("Error", error.message, "error");
+        console.log(err.response);
       }
     },
 
@@ -116,12 +114,9 @@ export default createStore({
         localStorage.removeItem("token");
         swal("Success", "Successfully Logout", "success");
       } catch (err) {
-        let error = err.response;
-        if (error.status) {
-          swal("Error", error.data.message, "error");
-        } else {
-          swal("Error", error.data.err.message, "error");
-        }
+        const error = err.response.data
+        swal("Error", error.message, "error");
+        console.log(err.response);
       }
     },
 
