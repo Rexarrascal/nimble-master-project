@@ -1,5 +1,5 @@
 const { pharmacyService } = require("../services");
-const pharmacyController = require("../controller/pharmacyContoller");
+const pharmacyController = require("../routes/controller/pharmacyContoller");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {

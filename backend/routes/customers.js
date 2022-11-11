@@ -1,5 +1,5 @@
 const { customerService, orderService } = require("../services");
-const customerController = require("../controller/customerController");
+const customerController = require("../routes/controller/customerController");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
