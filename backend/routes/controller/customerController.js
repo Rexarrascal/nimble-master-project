@@ -1,6 +1,6 @@
-const Customer = require("../models/customer");
+const Customer = require("../../models/customer");
 
-exports.registerNewCustomer = async (req, res) => {
+const registerNewCustomer = async (req, res) => {
   try {
     const isCustomer = await Customer.findOne({ email: req.body.email });
     if (isCustomer) {
@@ -20,7 +20,7 @@ exports.registerNewCustomer = async (req, res) => {
   }
 };
 
-exports.loginCustomer = async (req, res) => {
+const loginCustomer = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -37,6 +37,12 @@ exports.loginCustomer = async (req, res) => {
   }
 };
 
-exports.getCustomerDetails = async (req, res) => {
+const getCustomerDetails = async (req, res) => {
   await res.json(req.userData);
 };
+
+module.exports = {
+  registerNewCustomer,
+  loginCustomer,
+  getCustomerDetails
+}

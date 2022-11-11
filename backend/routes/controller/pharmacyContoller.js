@@ -1,6 +1,6 @@
-const Pharmacy = require("../models/pharmacy");
+const Pharmacy = require("../../models/pharmacy");
 
-exports.registerNewPharmacy = async (req, res) => {
+const registerNewPharmacy = async (req, res) => {
   try {
     const isPharmacy = await Pharmacy.findOne({ email: req.body.email });
     if (isPharmacy) {
@@ -19,15 +19,13 @@ exports.registerNewPharmacy = async (req, res) => {
     res.status(400).json({ err: err });
   }
 };
-exports.loginPharmacy = async (req, res) => {
+const loginPharmacy = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
     const pharmacy = await Pharmacy.findByCredentials(email, password);
     if (!pharmacy) {
-      return res
-        .status(401)
-        .json({ error: "Login failed! Check authentication credentials" });
+      throw new Error
     }
     const token = await pharmacy.generateAuthToken();
     res.status(201).json({ pharmacy, token });
@@ -36,6 +34,12 @@ exports.loginPharmacy = async (req, res) => {
   }
 };
 
-exports.getPharmacyDetails = async (req, res) => {
+const getPharmacyDetails = async (req, res) => {
   await res.json(req.userData);
 };
+
+module.exports = {
+  registerNewPharmacy,
+  loginPharmacy,
+  getPharmacyDetails
+}
